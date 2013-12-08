@@ -1,19 +1,23 @@
+package src;
+import gen.CodeCraftGrammarBaseListener;
+import gen.CodeCraftGrammarParser;
+import gen.CodeCraftGrammarParser.AssignContext;
+import gen.CodeCraftGrammarParser.AssignExprContext;
+import gen.CodeCraftGrammarParser.AssignmentStatementContext;
+import gen.CodeCraftGrammarParser.BlockContext;
+import gen.CodeCraftGrammarParser.BoolExprContext;
+import gen.CodeCraftGrammarParser.FuncCallIDContext;
+import gen.CodeCraftGrammarParser.FunctionDeclarationContext;
+import gen.CodeCraftGrammarParser.IdExprContext;
+import gen.CodeCraftGrammarParser.NumExprContext;
+import gen.CodeCraftGrammarParser.NumVarContext;
+import gen.CodeCraftGrammarParser.ProgramContext;
+import gen.CodeCraftGrammarParser.VarDecContext;
+
 import javax.swing.JTextArea;
 
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeProperty;
-
-import antlr4.CodeCraftGrammarBaseListener;
-import antlr4.CodeCraftGrammarParser;
-import antlr4.CodeCraftGrammarParser.AssignContext;
-import antlr4.CodeCraftGrammarParser.BlockContext;
-import antlr4.CodeCraftGrammarParser.BoolExprContext;
-import antlr4.CodeCraftGrammarParser.FuncCallIDContext;
-import antlr4.CodeCraftGrammarParser.FunctionDeclarationContext;
-import antlr4.CodeCraftGrammarParser.NumExprContext;
-import antlr4.CodeCraftGrammarParser.NumVarContext;
-import antlr4.CodeCraftGrammarParser.ProgramContext;
-import antlr4.CodeCraftGrammarParser.VarDecContext;
 
 
 public class SecondPass extends CodeCraftGrammarBaseListener{
@@ -31,6 +35,7 @@ public class SecondPass extends CodeCraftGrammarBaseListener{
     public void enterProgram(@NotNull ProgramContext ctx) {
     	currentScope = globals;
     }
+    
     public void enterFunctionDeclaration(@NotNull FunctionDeclarationContext ctx) {
     	currentScope = scopes.get(ctx);
     }
@@ -43,9 +48,8 @@ public class SecondPass extends CodeCraftGrammarBaseListener{
     public void exitBlock(@NotNull BlockContext ctx) {
     	currentScope = currentScope.getEnclosingScope();
     }
-    
-    public void exitVar(CodeCraftGrammarParser.VarContext ctx) {
-        String name = ctx.ID().getSymbol().getText();
+    public void exitIdExpr(IdExprContext ctx) {
+    	String name = ctx.ID().getSymbol().getText();
         Symbol var = currentScope.resolve(name);
         if ( var==null ) {
             Main.error(ctx.ID().getSymbol(), "no such variable: "+name);
@@ -54,7 +58,6 @@ public class SecondPass extends CodeCraftGrammarBaseListener{
         	Main.error(ctx.ID().getSymbol(), name+" is not a variable");
         }
     }
-    
     public void exitNumVar(@NotNull NumVarContext ctx) {
     	String name = ctx.ID().getSymbol().getText();
         Symbol var = currentScope.resolve(name);
@@ -94,28 +97,14 @@ public class SecondPass extends CodeCraftGrammarBaseListener{
         
     }
     
-    public void exitAssign(@NotNull AssignContext ctx) {
-    	/*
-    	String name = ctx.assignmentStatement().getSymbol().getText();
-        Symbol var = currentScope.resolve(name);
-        if ( var==null ) {
-            Main.error(ctx.ID().getSymbol(), "no such variable: "+name);
-        }
-        if ( var instanceof FunctionSymbol ) {
-        	Main.error(ctx.ID().getSymbol(), name+" is not a variable");
-        }
-        */
-
-        
-  
+    public void exitAssignmentStatement(AssignmentStatementContext ctx) {
+    	String name = ctx.ID().getSymbol().getText();
+    	Symbol var = currentScope.resolve(name);
+    	
+    	ctx.expression();
     }
     
-    
-    public void exitNumExpr(@NotNull NumExprContext ctx) {
+    public void enterIdExpr(IdExprContext ctx) {
+    	
     }
-    
-    public void exitBoolExpr(@NotNull BoolExprContext ctx) {
-    }
-    
-    
 }

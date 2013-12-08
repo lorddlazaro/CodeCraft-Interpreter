@@ -1,9 +1,10 @@
+package src;
 	// import ANTLR's runtime libraries
+import gen.CodeCraftGrammarLexer;
+import gen.CodeCraftGrammarParser;
+
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
-
-import antlr4.CodeCraftGrammarLexer;
-import antlr4.CodeCraftGrammarParser;
 public class Test {
 	
 	public static void main(String[] args) throws Exception {

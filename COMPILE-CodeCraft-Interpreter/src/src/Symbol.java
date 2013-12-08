@@ -1,3 +1,4 @@
+package src;
 
 /***
  * Excerpted from "The Definitive ANTLR 4 Reference",
@@ -12,6 +13,7 @@ public class Symbol { // A generic programming language symbol
 
     String name;      // All symbols at least have a name
     Type type;
+    Object value;
     Scope scope;      // All symbols know what scope contains them.
 
     public Symbol(String name) { this.name = name; }

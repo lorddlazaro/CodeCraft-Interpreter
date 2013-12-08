@@ -1,6 +1,6 @@
-// Generated from C:\Users\LorddMichael\eclipse workspace\COMPILE-CodeCraft-Interpreter\src\antlr4\CodeCraftGrammar.g4 by ANTLR 4.1
+// Generated from C:\Users\LorddMichael\git\CC\New folder\New folder\CodeCraft-Interpreter\COMPILE-CodeCraft-Interpreter\src\gen\CodeCraftGrammar.g4 by ANTLR 4.1
 
-package antlr4;
+package gen;
 
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -45,6 +45,19 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
+	@Override public void enterIdExpr(@NotNull CodeCraftGrammarParser.IdExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitIdExpr(@NotNull CodeCraftGrammarParser.IdExprContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
 	@Override public void enterReturnStatement(@NotNull CodeCraftGrammarParser.ReturnStatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -52,45 +65,6 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitReturnStatement(@NotNull CodeCraftGrammarParser.ReturnStatementContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterFunctionList(@NotNull CodeCraftGrammarParser.FunctionListContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitFunctionList(@NotNull CodeCraftGrammarParser.FunctionListContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterAssignExpr(@NotNull CodeCraftGrammarParser.AssignExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitAssignExpr(@NotNull CodeCraftGrammarParser.AssignExprContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterFuncExpr(@NotNull CodeCraftGrammarParser.FuncExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitFuncExpr(@NotNull CodeCraftGrammarParser.FuncExprContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -188,32 +162,6 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterDataTypeInt(@NotNull CodeCraftGrammarParser.DataTypeIntContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitDataTypeInt(@NotNull CodeCraftGrammarParser.DataTypeIntContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterActualParameterList(@NotNull CodeCraftGrammarParser.ActualParameterListContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitActualParameterList(@NotNull CodeCraftGrammarParser.ActualParameterListContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
 	@Override public void enterBang(@NotNull CodeCraftGrammarParser.BangContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -253,6 +201,19 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
+	@Override public void enterFuncCallExpr(@NotNull CodeCraftGrammarParser.FuncCallExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitFuncCallExpr(@NotNull CodeCraftGrammarParser.FuncCallExprContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
 	@Override public void enterIfonly(@NotNull CodeCraftGrammarParser.IfonlyContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -286,19 +247,6 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitOr(@NotNull CodeCraftGrammarParser.OrContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterFactor(@NotNull CodeCraftGrammarParser.FactorContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitFactor(@NotNull CodeCraftGrammarParser.FactorContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -390,19 +338,6 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitOpNotequal(@NotNull CodeCraftGrammarParser.OpNotequalContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterTerm(@NotNull CodeCraftGrammarParser.TermContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitTerm(@NotNull CodeCraftGrammarParser.TermContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -513,32 +448,6 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterDataTypeChar(@NotNull CodeCraftGrammarParser.DataTypeCharContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitDataTypeChar(@NotNull CodeCraftGrammarParser.DataTypeCharContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterAssignFuncCall(@NotNull CodeCraftGrammarParser.AssignFuncCallContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitAssignFuncCall(@NotNull CodeCraftGrammarParser.AssignFuncCallContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
 	@Override public void enterSub(@NotNull CodeCraftGrammarParser.SubContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -585,19 +494,6 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitDoWhileStatement(@NotNull CodeCraftGrammarParser.DoWhileStatementContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterVar(@NotNull CodeCraftGrammarParser.VarContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitVar(@NotNull CodeCraftGrammarParser.VarContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -663,19 +559,6 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitBlockStatement(@NotNull CodeCraftGrammarParser.BlockStatementContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterDataTypeFloat(@NotNull CodeCraftGrammarParser.DataTypeFloatContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitDataTypeFloat(@NotNull CodeCraftGrammarParser.DataTypeFloatContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -864,19 +747,6 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterDataTypeString(@NotNull CodeCraftGrammarParser.DataTypeStringContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitDataTypeString(@NotNull CodeCraftGrammarParser.DataTypeStringContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
 	@Override public void enterEqual(@NotNull CodeCraftGrammarParser.EqualContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -903,6 +773,19 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
+	@Override public void enterFactor(@NotNull CodeCraftGrammarParser.FactorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitFactor(@NotNull CodeCraftGrammarParser.FactorContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
 	@Override public void enterMul(@NotNull CodeCraftGrammarParser.MulContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -910,6 +793,19 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitMul(@NotNull CodeCraftGrammarParser.MulContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterAssignmentStatement(@NotNull CodeCraftGrammarParser.AssignmentStatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitAssignmentStatement(@NotNull CodeCraftGrammarParser.AssignmentStatementContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -955,13 +851,13 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterDataTypeBoolean(@NotNull CodeCraftGrammarParser.DataTypeBooleanContext ctx) { }
+	@Override public void enterDataType(@NotNull CodeCraftGrammarParser.DataTypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitDataTypeBoolean(@NotNull CodeCraftGrammarParser.DataTypeBooleanContext ctx) { }
+	@Override public void exitDataType(@NotNull CodeCraftGrammarParser.DataTypeContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -975,6 +871,19 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitWhileStatement(@NotNull CodeCraftGrammarParser.WhileStatementContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterTerm(@NotNull CodeCraftGrammarParser.TermContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitTerm(@NotNull CodeCraftGrammarParser.TermContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

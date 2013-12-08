@@ -1,10 +1,11 @@
+package src;
+import gen.CodeCraftGrammarBaseListener;
+import gen.CodeCraftGrammarParser;
+
 import java.util.Map;
 
 import org.antlr.v4.misc.OrderedHashMap;
 import org.antlr.v4.runtime.misc.NotNull;
-
-import antlr4.CodeCraftGrammarBaseListener;
-import antlr4.CodeCraftGrammarParser;
 
 
 public class CodeCraftLoader extends CodeCraftGrammarBaseListener{

@@ -1,18 +1,19 @@
+package src;
+import gen.CodeCraftGrammarBaseListener;
+import gen.CodeCraftGrammarParser;
+import gen.CodeCraftGrammarParser.ConstantStatementContext;
+import gen.CodeCraftGrammarParser.FunctionDeclarationContext;
+import gen.CodeCraftGrammarParser.MainFunctionContext;
+import gen.CodeCraftGrammarParser.ParameterContext;
+import gen.CodeCraftGrammarParser.ProgramContext;
+import gen.CodeCraftGrammarParser.VariableDeclarationContext;
+
 import javax.swing.JTextArea;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeProperty;
-
-import antlr4.CodeCraftGrammarBaseListener;
-import antlr4.CodeCraftGrammarParser;
-import antlr4.CodeCraftGrammarParser.ConstantStatementContext;
-import antlr4.CodeCraftGrammarParser.FunctionDeclarationContext;
-import antlr4.CodeCraftGrammarParser.MainFunctionContext;
-import antlr4.CodeCraftGrammarParser.ParameterContext;
-import antlr4.CodeCraftGrammarParser.ProgramContext;
-import antlr4.CodeCraftGrammarParser.VariableDeclarationContext;
 
 
 public class FirstPass extends CodeCraftGrammarBaseListener{
@@ -126,12 +127,14 @@ public class FirstPass extends CodeCraftGrammarBaseListener{
     
     public void exitConstantStatement(@NotNull ConstantStatementContext ctx) {
     	GlobalScope temp = (GlobalScope) currentScope;
-    	String name = ctx.ID().getText();
+    	VariableDeclarationContext ctx2 = ctx.variableDeclaration();
+    	
+    	String name = ctx2.ID().getText();
     	if(temp.symbols.containsKey(name)){
     		//multiple function declaration in same global scope
-    		Main.error(ctx.ID().getSymbol(), "Constant already declared: "+name);
+    		Main.error(ctx2.ID().getSymbol(), "Constant already declared: "+name);
     	}
-    	defineVar(ctx.dataType(), ctx.ID().getSymbol(),true);
+    	defineVar(ctx2.dataType(), ctx2.ID().getSymbol(),true);
     }
     
     void defineVar(CodeCraftGrammarParser.DataTypeContext typeCtx, Token nameToken, Boolean isConstant) {

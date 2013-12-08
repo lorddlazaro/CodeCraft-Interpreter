@@ -1,3 +1,4 @@
+package src;
 
 /***
  * Excerpted from "The Definitive ANTLR 4 Reference",
@@ -7,7 +8,15 @@
  * We make no guarantees that this code is fit for any purpose. 
  * Visit http://www.pragmaticprogrammer.com/titles/tpantlr2 for more book information.
 ***/
-public class LocalScope extends BaseScope {
-    public LocalScope(Scope parent) { super(parent); }
-    public String getScopeName() { return "locals"; }
+public interface Scope {
+    public String getScopeName();
+
+    /** Where to look next for symbols */
+    public Scope getEnclosingScope();
+
+    /** Define a symbol in the current scope */
+    public void define(Symbol sym);
+
+    /** Look up name in this scope or in enclosing scope if not here */
+    public Symbol resolve(String name);
 }

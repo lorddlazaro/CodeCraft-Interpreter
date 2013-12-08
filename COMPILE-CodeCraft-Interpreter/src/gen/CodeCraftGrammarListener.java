@@ -1,6 +1,6 @@
-// Generated from C:\Users\LorddMichael\eclipse workspace\COMPILE-CodeCraft-Interpreter\src\antlr4\CodeCraftGrammar.g4 by ANTLR 4.1
+// Generated from C:\Users\LorddMichael\git\CC\New folder\New folder\CodeCraft-Interpreter\COMPILE-CodeCraft-Interpreter\src\gen\CodeCraftGrammar.g4 by ANTLR 4.1
 
-package antlr4;
+package gen;
 
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
@@ -33,6 +33,17 @@ public interface CodeCraftGrammarListener extends ParseTreeListener {
 	void exitFor(@NotNull CodeCraftGrammarParser.ForContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#idExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterIdExpr(@NotNull CodeCraftGrammarParser.IdExprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CodeCraftGrammarParser#idExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitIdExpr(@NotNull CodeCraftGrammarParser.IdExprContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#returnStatement}.
 	 * @param ctx the parse tree
 	 */
@@ -42,39 +53,6 @@ public interface CodeCraftGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitReturnStatement(@NotNull CodeCraftGrammarParser.ReturnStatementContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#functionList}.
-	 * @param ctx the parse tree
-	 */
-	void enterFunctionList(@NotNull CodeCraftGrammarParser.FunctionListContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CodeCraftGrammarParser#functionList}.
-	 * @param ctx the parse tree
-	 */
-	void exitFunctionList(@NotNull CodeCraftGrammarParser.FunctionListContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#assignExpr}.
-	 * @param ctx the parse tree
-	 */
-	void enterAssignExpr(@NotNull CodeCraftGrammarParser.AssignExprContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CodeCraftGrammarParser#assignExpr}.
-	 * @param ctx the parse tree
-	 */
-	void exitAssignExpr(@NotNull CodeCraftGrammarParser.AssignExprContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#funcExpr}.
-	 * @param ctx the parse tree
-	 */
-	void enterFuncExpr(@NotNull CodeCraftGrammarParser.FuncExprContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CodeCraftGrammarParser#funcExpr}.
-	 * @param ctx the parse tree
-	 */
-	void exitFuncExpr(@NotNull CodeCraftGrammarParser.FuncExprContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#variableDeclaration}.
@@ -154,28 +132,6 @@ public interface CodeCraftGrammarListener extends ParseTreeListener {
 	void exitReturnDataType(@NotNull CodeCraftGrammarParser.ReturnDataTypeContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#dataTypeInt}.
-	 * @param ctx the parse tree
-	 */
-	void enterDataTypeInt(@NotNull CodeCraftGrammarParser.DataTypeIntContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CodeCraftGrammarParser#dataTypeInt}.
-	 * @param ctx the parse tree
-	 */
-	void exitDataTypeInt(@NotNull CodeCraftGrammarParser.DataTypeIntContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#actualParameterList}.
-	 * @param ctx the parse tree
-	 */
-	void enterActualParameterList(@NotNull CodeCraftGrammarParser.ActualParameterListContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CodeCraftGrammarParser#actualParameterList}.
-	 * @param ctx the parse tree
-	 */
-	void exitActualParameterList(@NotNull CodeCraftGrammarParser.ActualParameterListContext ctx);
-
-	/**
 	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#bang}.
 	 * @param ctx the parse tree
 	 */
@@ -209,6 +165,17 @@ public interface CodeCraftGrammarListener extends ParseTreeListener {
 	void exitChoke(@NotNull CodeCraftGrammarParser.ChokeContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#funcCallExpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterFuncCallExpr(@NotNull CodeCraftGrammarParser.FuncCallExprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CodeCraftGrammarParser#funcCallExpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitFuncCallExpr(@NotNull CodeCraftGrammarParser.FuncCallExprContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#ifonly}.
 	 * @param ctx the parse tree
 	 */
@@ -240,17 +207,6 @@ public interface CodeCraftGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitOr(@NotNull CodeCraftGrammarParser.OrContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#Factor}.
-	 * @param ctx the parse tree
-	 */
-	void enterFactor(@NotNull CodeCraftGrammarParser.FactorContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CodeCraftGrammarParser#Factor}.
-	 * @param ctx the parse tree
-	 */
-	void exitFactor(@NotNull CodeCraftGrammarParser.FactorContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#mod}.
@@ -328,17 +284,6 @@ public interface CodeCraftGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitOpNotequal(@NotNull CodeCraftGrammarParser.OpNotequalContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#Term}.
-	 * @param ctx the parse tree
-	 */
-	void enterTerm(@NotNull CodeCraftGrammarParser.TermContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CodeCraftGrammarParser#Term}.
-	 * @param ctx the parse tree
-	 */
-	void exitTerm(@NotNull CodeCraftGrammarParser.TermContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#opGreater}.
@@ -429,28 +374,6 @@ public interface CodeCraftGrammarListener extends ParseTreeListener {
 	void exitFuncCall(@NotNull CodeCraftGrammarParser.FuncCallContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#dataTypeChar}.
-	 * @param ctx the parse tree
-	 */
-	void enterDataTypeChar(@NotNull CodeCraftGrammarParser.DataTypeCharContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CodeCraftGrammarParser#dataTypeChar}.
-	 * @param ctx the parse tree
-	 */
-	void exitDataTypeChar(@NotNull CodeCraftGrammarParser.DataTypeCharContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#assignFuncCall}.
-	 * @param ctx the parse tree
-	 */
-	void enterAssignFuncCall(@NotNull CodeCraftGrammarParser.AssignFuncCallContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CodeCraftGrammarParser#assignFuncCall}.
-	 * @param ctx the parse tree
-	 */
-	void exitAssignFuncCall(@NotNull CodeCraftGrammarParser.AssignFuncCallContext ctx);
-
-	/**
 	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#sub}.
 	 * @param ctx the parse tree
 	 */
@@ -493,17 +416,6 @@ public interface CodeCraftGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitDoWhileStatement(@NotNull CodeCraftGrammarParser.DoWhileStatementContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#var}.
-	 * @param ctx the parse tree
-	 */
-	void enterVar(@NotNull CodeCraftGrammarParser.VarContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CodeCraftGrammarParser#var}.
-	 * @param ctx the parse tree
-	 */
-	void exitVar(@NotNull CodeCraftGrammarParser.VarContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#div}.
@@ -559,17 +471,6 @@ public interface CodeCraftGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitBlockStatement(@NotNull CodeCraftGrammarParser.BlockStatementContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#dataTypeFloat}.
-	 * @param ctx the parse tree
-	 */
-	void enterDataTypeFloat(@NotNull CodeCraftGrammarParser.DataTypeFloatContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CodeCraftGrammarParser#dataTypeFloat}.
-	 * @param ctx the parse tree
-	 */
-	void exitDataTypeFloat(@NotNull CodeCraftGrammarParser.DataTypeFloatContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#boolExpr}.
@@ -726,17 +627,6 @@ public interface CodeCraftGrammarListener extends ParseTreeListener {
 	void exitReturn(@NotNull CodeCraftGrammarParser.ReturnContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#dataTypeString}.
-	 * @param ctx the parse tree
-	 */
-	void enterDataTypeString(@NotNull CodeCraftGrammarParser.DataTypeStringContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link CodeCraftGrammarParser#dataTypeString}.
-	 * @param ctx the parse tree
-	 */
-	void exitDataTypeString(@NotNull CodeCraftGrammarParser.DataTypeStringContext ctx);
-
-	/**
 	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#equal}.
 	 * @param ctx the parse tree
 	 */
@@ -759,6 +649,17 @@ public interface CodeCraftGrammarListener extends ParseTreeListener {
 	void exitVarDec(@NotNull CodeCraftGrammarParser.VarDecContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#factor}.
+	 * @param ctx the parse tree
+	 */
+	void enterFactor(@NotNull CodeCraftGrammarParser.FactorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CodeCraftGrammarParser#factor}.
+	 * @param ctx the parse tree
+	 */
+	void exitFactor(@NotNull CodeCraftGrammarParser.FactorContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#mul}.
 	 * @param ctx the parse tree
 	 */
@@ -768,6 +669,17 @@ public interface CodeCraftGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitMul(@NotNull CodeCraftGrammarParser.MulContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#assignmentStatement}.
+	 * @param ctx the parse tree
+	 */
+	void enterAssignmentStatement(@NotNull CodeCraftGrammarParser.AssignmentStatementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CodeCraftGrammarParser#assignmentStatement}.
+	 * @param ctx the parse tree
+	 */
+	void exitAssignmentStatement(@NotNull CodeCraftGrammarParser.AssignmentStatementContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#constantStatement}.
@@ -803,15 +715,15 @@ public interface CodeCraftGrammarListener extends ParseTreeListener {
 	void exitOpGreaterequal(@NotNull CodeCraftGrammarParser.OpGreaterequalContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#dataTypeBoolean}.
+	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#dataType}.
 	 * @param ctx the parse tree
 	 */
-	void enterDataTypeBoolean(@NotNull CodeCraftGrammarParser.DataTypeBooleanContext ctx);
+	void enterDataType(@NotNull CodeCraftGrammarParser.DataTypeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link CodeCraftGrammarParser#dataTypeBoolean}.
+	 * Exit a parse tree produced by {@link CodeCraftGrammarParser#dataType}.
 	 * @param ctx the parse tree
 	 */
-	void exitDataTypeBoolean(@NotNull CodeCraftGrammarParser.DataTypeBooleanContext ctx);
+	void exitDataType(@NotNull CodeCraftGrammarParser.DataTypeContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#whileStatement}.
@@ -823,6 +735,17 @@ public interface CodeCraftGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitWhileStatement(@NotNull CodeCraftGrammarParser.WhileStatementContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#term}.
+	 * @param ctx the parse tree
+	 */
+	void enterTerm(@NotNull CodeCraftGrammarParser.TermContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link CodeCraftGrammarParser#term}.
+	 * @param ctx the parse tree
+	 */
+	void exitTerm(@NotNull CodeCraftGrammarParser.TermContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link CodeCraftGrammarParser#relational}.

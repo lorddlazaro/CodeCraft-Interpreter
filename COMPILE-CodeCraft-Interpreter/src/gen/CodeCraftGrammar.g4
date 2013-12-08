@@ -7,45 +7,34 @@
 grammar CodeCraftGrammar;
 
 @header{
-package antlr4;
+package gen;
 }
 
-
-// starting point for parsing
 program
-    :  constantStatement* mainFunction functionList EOF 
+    :  constantStatement* mainFunction functionDeclaration* EOF 
     ;
-
 constantStatement 
-    : ABSOLUTE dataType ID ASSIGN expression SEMI     
+    : ABSOLUTE variableDeclaration ASSIGN expression SEMI     
     ;
-// VARIABLE DECL
-
 variableDeclaration 
-    : dataType ID SEMI
+    : dataType ID 
     ;
 dataType
-    : INT       #dataTypeInt
-    | FLOAT     #dataTypeFloat
-    | CHAR      #dataTypeChar
-    | STRING    #dataTypeString
-    | BOOLEAN   #dataTypeBoolean
-    ;
-//Function Decl
-
-functionList
-    : functionDeclaration functionList
-    |//e
+    : INT       
+    | FLOAT     
+    | CHAR     
+    | STRING    
+    | BOOLEAN   
     ;
 functionDeclaration
-    : returnType ID LPAREN parameterList? RPAREN block
+    : returnType ID parameterList block
     ;
 returnType
     : dataType #returnDataType
     | DARKNESS  #returnDarkness
     ;
 parameterList
-    : parameter (COMMA parameterList)*	
+    : LPAREN parameter? (COMMA parameter)* RPAREN
     ;
 parameter
     : dataType ID
@@ -54,14 +43,12 @@ block
     : LBRACE statement* RBRACE
     ;
 mainFunction
-    : DARKNESS MINE LPAREN parameterList RPAREN block
+    : DARKNESS MINE parameterList block
     ;
-
-//Statement rules
 
 statement
     : block #blockStatement
-    | variableDeclaration   #varDec
+    | variableDeclaration SEMI  #varDec
     | assignmentStatement SEMI  #assign
     | functionCallStatement SEMI #funcCall
     | ifStatement   #if
@@ -71,23 +58,16 @@ statement
     | returnStatement   #return
     | CHOKE SEMI    #choke
     ;
-
 assignmentStatement
-    : ID ASSIGN expression    #assignExpr               
-    | ID ASSIGN functionCallStatement    #assignFuncCall 
+    : ID ASSIGN expression
     ;
 functionCallStatement
-    : ID LPAREN actualParameterList RPAREN  #funcCallID
-    | PRINT LPAREN actualParameterList RPAREN   #funcCallPrint
-    | PRINTLN LPAREN actualParameterList RPAREN #funcCallPrintln
-    ;
-actualParameterList
-    : actualParameters
-    |//e
+    : ID actualParameters  #funcCallID
+    | PRINT actualParameters   #funcCallPrint
+    | PRINTLN actualParameters #funcCallPrintln
     ;
 actualParameters
-    : (expression) COMMA actualParameters   
-    | (expression)
+    : LPAREN expression? (COMMA expression)* RPAREN
     ;
 ifStatement
     : WETHER condition block OTHERWISE block  #ifelse
@@ -108,25 +88,22 @@ forStatement
 returnStatement
     : REPLY expression SEMI
     ;
-
-//expression rules
-
 expression
     : StringLiteral #stringExpr
     | CharacterLiteral  #charExpr
     | numExpression #numExpr
     | booleanExpression #boolExpr
-    | functionCallStatement #funcExpr
-    | ID         #var
+    | functionCallStatement #funcCallExpr
+    | ID         #idExpr
     | NULL  #nullExpr
     ;
 numExpression
-    : numTerm   #Term
+    : numTerm   #term
     | numTerm ADD numExpression #add
     | numTerm SUB numExpression #sub
     ;
 numTerm
-    : numFactor #Factor
+    : numFactor #factor
     | numFactor MUL numTerm #mul
     | numFactor DIV numTerm #div
     | numFactor MOD numTerm #mod
@@ -167,18 +144,13 @@ booleanFactor
     | ID  #boolVar
     ;
 //LEXICAL RULES
-
-
 // Keywords
 PRINT           : 'print';
 PRINTLN         : 'println';
-SUMMON          : 'summon';
-PARTY           : 'party';
 ABSOLUTE        : 'absolute';
 DARKNESS        : 'darkness';
 MINE            : 'mine';
 CHOKE           : 'choke';
-PROLONG         : 'prolong';
 WETHER          : 'wether';
 OTHERWISE       : 'otherwise';
 UNTIL           : 'until';
@@ -197,11 +169,8 @@ LPAREN          : '(';
 RPAREN          : ')';
 LBRACE          : '{';
 RBRACE          : '}';
-LBRACK          : '[';
-RBRACK          : ']';
 SEMI            : ';';
-COMMA           : ',';
-DOT             : '.';              
+COMMA           : ',';          
               
 // Operators
 ASSIGN          : '=';

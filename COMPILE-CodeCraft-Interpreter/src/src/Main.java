@@ -1,21 +1,24 @@
+package src;
+import gen.CodeCraftGrammarLexer;
+import gen.CodeCraftGrammarParser;
+
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringBufferInputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.JTextArea;
 
-import org.antlr.v4.runtime.ANTLRFileStream;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
+import org.antlr.v4.runtime.tree.gui.TreeViewer;
 
 
-import antlr4.CodeCraftGrammarLexer;
-import antlr4.CodeCraftGrammarParser;
 
 
 public class Main {
@@ -86,6 +89,9 @@ public class Main {
         parser.setBuildParseTree(true);
         
         ParseTree tree = parser.program();
+        List<String> ruleNames = Arrays.asList(parser.getRuleNames());
+        TreeViewer tv = new TreeViewer(ruleNames, tree);
+        //tv.
         
         ParseTreeWalker walker = new ParseTreeWalker();
         
@@ -94,6 +100,8 @@ public class Main {
         // create next phase and feed symbol table info from def to ref phase
         SecondPass ref = new SecondPass(def.globals, def.scopes,ta);
         walker.walk(ref, tree);
+        
+        
         //EvalVisitor interpreter = new EvalVisitor(def.globals,def.scopes);
         //interpreter.visit(tree);
         
