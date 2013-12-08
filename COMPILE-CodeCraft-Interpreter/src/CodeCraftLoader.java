@@ -18,6 +18,7 @@ public class CodeCraftLoader extends CodeCraftGrammarBaseListener{
 		String value = ctx.STRING().getText();
 		SymbolTable.put(id, value);
 		*/
+		//test
 	}
 	
 }
