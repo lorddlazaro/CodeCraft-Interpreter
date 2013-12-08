@@ -4,3 +4,4 @@
 *.jar
 *.war
 *.ear
+ !antlr-4.1-complete.jar
