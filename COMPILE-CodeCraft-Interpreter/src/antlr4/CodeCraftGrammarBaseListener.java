@@ -8,17 +8,18 @@ import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
+import java.util.*;
+
 /**
  * This class provides an empty implementation of {@link CodeCraftGrammarListener},
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
 public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
+
+	public Stack<Integer> stack		= 	new Stack<Integer>();
+	public Map<String, Integer> sym	=	new HashMap<String, Integer>();
+	
 	@Override public void enterAssign(@NotNull CodeCraftGrammarParser.AssignContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -1007,12 +1008,12 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterFunctionDeclaration(@NotNull CodeCraftGrammarParser.FunctionDeclarationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
+	@Override public void enterFunctionDeclaration(@NotNull CodeCraftGrammarParser.FunctionDeclarationContext ctx) 
+	{
+		String functionName = ctx.ID().getText();
+		this.sym.put(functionName, null);
+	}
+	
 	@Override public void exitFunctionDeclaration(@NotNull CodeCraftGrammarParser.FunctionDeclarationContext ctx) { }
 
 	/**
