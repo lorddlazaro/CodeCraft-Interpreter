@@ -18,10 +18,63 @@ public class Symbol { // A generic programming language symbol
 
     public Symbol(String name) { this.name = name; }
     public Symbol(String name, Type type) { this(name); this.type = type; }
+    public Symbol(Type type, Object value){
+    	this.type = type;
+    	this.value =value;
+    }
+    
+    public boolean asBoolean(){
+    	return (boolean) value;
+    }
+    public String asString() {
+        return (String)value;
+    }
+    public Integer asInt(){
+    	return (Integer)value;
+    }
+    public Float asFloat(){
+    	if(type==type.tINT){
+    		Integer n = (Integer)value;
+    		return Float.valueOf(((float)n.intValue()));
+    	}
+    	return (Float)value;
+    }
+    public Character asChar(){
+    	return (Character)value;
+    }
+    
+    public boolean isBoolean(){
+    	if(type==Type.tBOOLEAN)
+    		return true;
+    	return false;
+    }
+    public boolean isString(){
+    	if(type==Type.tSTRING)
+    		return true;
+    	return false;
+    }
+    public boolean isInt(){
+    	if(type==Type.tINT)
+    		return true;
+    	return false;
+    }
+    public boolean isFloat(){
+    	if(type==Type.tFLOAT)
+    		return true;
+    	return false;
+    }
+    public boolean isChar(){
+    	if(type==Type.tCHAR)
+    		return true;
+    	return false;
+    }
+    
     public String getName() { return name; }
 
     public String toString() {
-        if ( type!=Type.tINVALID ) return '<'+getName()+":"+type+'>';
+        if ( type!=Type.tINVALID && name !=null) return '<'+getName()+":"+type+'>';
+        if( type!=Type.tINVALID )
+        	return (""+type).substring(1);
         return getName();
     }
 }

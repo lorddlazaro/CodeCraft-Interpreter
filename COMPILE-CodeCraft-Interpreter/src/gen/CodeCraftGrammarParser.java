@@ -40,16 +40,13 @@ public class CodeCraftGrammarParser extends Parser {
 		RULE_statement = 10, RULE_assignmentStatement = 11, RULE_functionCallStatement = 12, 
 		RULE_actualParameters = 13, RULE_ifStatement = 14, RULE_condition = 15, 
 		RULE_whileStatement = 16, RULE_doWhileStatement = 17, RULE_forStatement = 18, 
-		RULE_returnStatement = 19, RULE_expression = 20, RULE_numExpression = 21, 
-		RULE_numTerm = 22, RULE_numFactor = 23, RULE_booleanExpression = 24, RULE_relationalOperator = 25, 
-		RULE_booleanLogical = 26, RULE_booleanTerm = 27, RULE_booleanFactor = 28;
+		RULE_returnStatement = 19, RULE_expression = 20;
 	public static final String[] ruleNames = {
 		"program", "constantStatement", "variableDeclaration", "dataType", "functionDeclaration", 
 		"returnType", "parameterList", "parameter", "block", "mainFunction", "statement", 
 		"assignmentStatement", "functionCallStatement", "actualParameters", "ifStatement", 
 		"condition", "whileStatement", "doWhileStatement", "forStatement", "returnStatement", 
-		"expression", "numExpression", "numTerm", "numFactor", "booleanExpression", 
-		"relationalOperator", "booleanLogical", "booleanTerm", "booleanFactor"
+		"expression"
 	};
 
 	@Override
@@ -106,34 +103,34 @@ public class CodeCraftGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(61);
+			setState(45);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==ABSOLUTE) {
 				{
 				{
-				setState(58); constantStatement();
+				setState(42); constantStatement();
 				}
 				}
-				setState(63);
+				setState(47);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(64); mainFunction();
-			setState(68);
+			setState(48); mainFunction();
+			setState(52);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << DARKNESS) | (1L << INT) | (1L << CHAR) | (1L << STRING) | (1L << FLOAT) | (1L << BOOLEAN))) != 0)) {
 				{
 				{
-				setState(65); functionDeclaration();
+				setState(49); functionDeclaration();
 				}
 				}
-				setState(70);
+				setState(54);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(71); match(EOF);
+			setState(55); match(EOF);
 			}
 		}
 		catch (RecognitionException re) {
@@ -151,11 +148,12 @@ public class CodeCraftGrammarParser extends Parser {
 		public TerminalNode ASSIGN() { return getToken(CodeCraftGrammarParser.ASSIGN, 0); }
 		public TerminalNode ABSOLUTE() { return getToken(CodeCraftGrammarParser.ABSOLUTE, 0); }
 		public TerminalNode SEMI() { return getToken(CodeCraftGrammarParser.SEMI, 0); }
+		public TerminalNode ID() { return getToken(CodeCraftGrammarParser.ID, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
-		public VariableDeclarationContext variableDeclaration() {
-			return getRuleContext(VariableDeclarationContext.class,0);
+		public DataTypeContext dataType() {
+			return getRuleContext(DataTypeContext.class,0);
 		}
 		public ConstantStatementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -177,11 +175,12 @@ public class CodeCraftGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(73); match(ABSOLUTE);
-			setState(74); variableDeclaration();
-			setState(75); match(ASSIGN);
-			setState(76); expression();
-			setState(77); match(SEMI);
+			setState(57); match(ABSOLUTE);
+			setState(58); dataType();
+			setState(59); match(ID);
+			setState(60); match(ASSIGN);
+			setState(61); expression(0);
+			setState(62); match(SEMI);
 			}
 		}
 		catch (RecognitionException re) {
@@ -220,8 +219,8 @@ public class CodeCraftGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(79); dataType();
-			setState(80); match(ID);
+			setState(64); dataType();
+			setState(65); match(ID);
 			}
 		}
 		catch (RecognitionException re) {
@@ -262,7 +261,7 @@ public class CodeCraftGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(82);
+			setState(67);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << INT) | (1L << CHAR) | (1L << STRING) | (1L << FLOAT) | (1L << BOOLEAN))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -312,10 +311,10 @@ public class CodeCraftGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(84); returnType();
-			setState(85); match(ID);
-			setState(86); parameterList();
-			setState(87); block();
+			setState(69); returnType();
+			setState(70); match(ID);
+			setState(71); parameterList();
+			setState(72); block();
 			}
 		}
 		catch (RecognitionException re) {
@@ -371,7 +370,7 @@ public class CodeCraftGrammarParser extends Parser {
 		ReturnTypeContext _localctx = new ReturnTypeContext(_ctx, getState());
 		enterRule(_localctx, 10, RULE_returnType);
 		try {
-			setState(91);
+			setState(76);
 			switch (_input.LA(1)) {
 			case INT:
 			case CHAR:
@@ -381,14 +380,14 @@ public class CodeCraftGrammarParser extends Parser {
 				_localctx = new ReturnDataTypeContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(89); dataType();
+				setState(74); dataType();
 				}
 				break;
 			case DARKNESS:
 				_localctx = new ReturnDarknessContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(90); match(DARKNESS);
+				setState(75); match(DARKNESS);
 				}
 				break;
 			default:
@@ -440,30 +439,30 @@ public class CodeCraftGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(93); match(LPAREN);
-			setState(95);
+			setState(78); match(LPAREN);
+			setState(80);
 			_la = _input.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << INT) | (1L << CHAR) | (1L << STRING) | (1L << FLOAT) | (1L << BOOLEAN))) != 0)) {
 				{
-				setState(94); parameter();
+				setState(79); parameter();
 				}
 			}
 
-			setState(101);
+			setState(86);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				setState(97); match(COMMA);
-				setState(98); parameter();
+				setState(82); match(COMMA);
+				setState(83); parameter();
 				}
 				}
-				setState(103);
+				setState(88);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(104); match(RPAREN);
+			setState(89); match(RPAREN);
 			}
 		}
 		catch (RecognitionException re) {
@@ -502,8 +501,8 @@ public class CodeCraftGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(106); dataType();
-			setState(107); match(ID);
+			setState(91); dataType();
+			setState(92); match(ID);
 			}
 		}
 		catch (RecognitionException re) {
@@ -547,21 +546,21 @@ public class CodeCraftGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(109); match(LBRACE);
-			setState(113);
+			setState(94); match(LBRACE);
+			setState(98);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PRINT) | (1L << PRINTLN) | (1L << CHOKE) | (1L << WETHER) | (1L << UNTIL) | (1L << EXECUTE) | (1L << AS) | (1L << REPLY) | (1L << INT) | (1L << CHAR) | (1L << STRING) | (1L << FLOAT) | (1L << BOOLEAN) | (1L << LBRACE) | (1L << ID))) != 0)) {
 				{
 				{
-				setState(110); statement();
+				setState(95); statement();
 				}
 				}
-				setState(115);
+				setState(100);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(116); match(RBRACE);
+			setState(101); match(RBRACE);
 			}
 		}
 		catch (RecognitionException re) {
@@ -604,10 +603,10 @@ public class CodeCraftGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(118); match(DARKNESS);
-			setState(119); match(MINE);
-			setState(120); parameterList();
-			setState(121); block();
+			setState(103); match(DARKNESS);
+			setState(104); match(MINE);
+			setState(105); parameterList();
+			setState(106); block();
 			}
 		}
 		catch (RecognitionException re) {
@@ -779,13 +778,13 @@ public class CodeCraftGrammarParser extends Parser {
 		StatementContext _localctx = new StatementContext(_ctx, getState());
 		enterRule(_localctx, 20, RULE_statement);
 		try {
-			setState(140);
+			setState(125);
 			switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
 			case 1:
 				_localctx = new BlockStatementContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(123); block();
+				setState(108); block();
 				}
 				break;
 
@@ -793,8 +792,8 @@ public class CodeCraftGrammarParser extends Parser {
 				_localctx = new VarDecContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(124); variableDeclaration();
-				setState(125); match(SEMI);
+				setState(109); variableDeclaration();
+				setState(110); match(SEMI);
 				}
 				break;
 
@@ -802,8 +801,8 @@ public class CodeCraftGrammarParser extends Parser {
 				_localctx = new AssignContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(127); assignmentStatement();
-				setState(128); match(SEMI);
+				setState(112); assignmentStatement();
+				setState(113); match(SEMI);
 				}
 				break;
 
@@ -811,8 +810,8 @@ public class CodeCraftGrammarParser extends Parser {
 				_localctx = new FuncCallContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(130); functionCallStatement();
-				setState(131); match(SEMI);
+				setState(115); functionCallStatement();
+				setState(116); match(SEMI);
 				}
 				break;
 
@@ -820,7 +819,7 @@ public class CodeCraftGrammarParser extends Parser {
 				_localctx = new IfContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(133); ifStatement();
+				setState(118); ifStatement();
 				}
 				break;
 
@@ -828,7 +827,7 @@ public class CodeCraftGrammarParser extends Parser {
 				_localctx = new WhileContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(134); whileStatement();
+				setState(119); whileStatement();
 				}
 				break;
 
@@ -836,7 +835,7 @@ public class CodeCraftGrammarParser extends Parser {
 				_localctx = new DowhileContext(_localctx);
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(135); doWhileStatement();
+				setState(120); doWhileStatement();
 				}
 				break;
 
@@ -844,7 +843,7 @@ public class CodeCraftGrammarParser extends Parser {
 				_localctx = new ForContext(_localctx);
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(136); forStatement();
+				setState(121); forStatement();
 				}
 				break;
 
@@ -852,7 +851,7 @@ public class CodeCraftGrammarParser extends Parser {
 				_localctx = new ReturnContext(_localctx);
 				enterOuterAlt(_localctx, 9);
 				{
-				setState(137); returnStatement();
+				setState(122); returnStatement();
 				}
 				break;
 
@@ -860,8 +859,8 @@ public class CodeCraftGrammarParser extends Parser {
 				_localctx = new ChokeContext(_localctx);
 				enterOuterAlt(_localctx, 10);
 				{
-				setState(138); match(CHOKE);
-				setState(139); match(SEMI);
+				setState(123); match(CHOKE);
+				setState(124); match(SEMI);
 				}
 				break;
 			}
@@ -903,9 +902,9 @@ public class CodeCraftGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(142); match(ID);
-			setState(143); match(ASSIGN);
-			setState(144); expression();
+			setState(127); match(ID);
+			setState(128); match(ASSIGN);
+			setState(129); expression(0);
 			}
 		}
 		catch (RecognitionException re) {
@@ -980,30 +979,30 @@ public class CodeCraftGrammarParser extends Parser {
 		FunctionCallStatementContext _localctx = new FunctionCallStatementContext(_ctx, getState());
 		enterRule(_localctx, 24, RULE_functionCallStatement);
 		try {
-			setState(152);
+			setState(137);
 			switch (_input.LA(1)) {
 			case ID:
 				_localctx = new FuncCallIDContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(146); match(ID);
-				setState(147); actualParameters();
+				setState(131); match(ID);
+				setState(132); actualParameters();
 				}
 				break;
 			case PRINT:
 				_localctx = new FuncCallPrintContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(148); match(PRINT);
-				setState(149); actualParameters();
+				setState(133); match(PRINT);
+				setState(134); actualParameters();
 				}
 				break;
 			case PRINTLN:
 				_localctx = new FuncCallPrintlnContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(150); match(PRINTLN);
-				setState(151); actualParameters();
+				setState(135); match(PRINTLN);
+				setState(136); actualParameters();
 				}
 				break;
 			default:
@@ -1055,30 +1054,30 @@ public class CodeCraftGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(154); match(LPAREN);
-			setState(156);
+			setState(139); match(LPAREN);
+			setState(141);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PRINT) | (1L << PRINTLN) | (1L << NULL) | (1L << LPAREN) | (1L << BANG) | (1L << IntegerLiteral) | (1L << FloatingPointLiteral) | (1L << CharacterLiteral) | (1L << StringLiteral) | (1L << BooleanLiteral) | (1L << ID))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NULL) | (1L << LPAREN) | (1L << BANG) | (1L << IntegerLiteral) | (1L << FloatingPointLiteral) | (1L << CharacterLiteral) | (1L << StringLiteral) | (1L << BooleanLiteral) | (1L << ID))) != 0)) {
 				{
-				setState(155); expression();
+				setState(140); expression(0);
 				}
 			}
 
-			setState(162);
+			setState(147);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				setState(158); match(COMMA);
-				setState(159); expression();
+				setState(143); match(COMMA);
+				setState(144); expression(0);
 				}
 				}
-				setState(164);
+				setState(149);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(165); match(RPAREN);
+			setState(150); match(RPAREN);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1148,17 +1147,17 @@ public class CodeCraftGrammarParser extends Parser {
 		IfStatementContext _localctx = new IfStatementContext(_ctx, getState());
 		enterRule(_localctx, 28, RULE_ifStatement);
 		try {
-			setState(177);
+			setState(162);
 			switch ( getInterpreter().adaptivePredict(_input,10,_ctx) ) {
 			case 1:
 				_localctx = new IfelseContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(167); match(WETHER);
-				setState(168); condition();
-				setState(169); block();
-				setState(170); match(OTHERWISE);
-				setState(171); block();
+				setState(152); match(WETHER);
+				setState(153); condition();
+				setState(154); block();
+				setState(155); match(OTHERWISE);
+				setState(156); block();
 				}
 				break;
 
@@ -1166,9 +1165,9 @@ public class CodeCraftGrammarParser extends Parser {
 				_localctx = new IfonlyContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(173); match(WETHER);
-				setState(174); condition();
-				setState(175); block();
+				setState(158); match(WETHER);
+				setState(159); condition();
+				setState(160); block();
 				}
 				break;
 			}
@@ -1186,8 +1185,8 @@ public class CodeCraftGrammarParser extends Parser {
 
 	public static class ConditionContext extends ParserRuleContext {
 		public TerminalNode RPAREN() { return getToken(CodeCraftGrammarParser.RPAREN, 0); }
-		public BooleanExpressionContext booleanExpression() {
-			return getRuleContext(BooleanExpressionContext.class,0);
+		public ExpressionContext expression() {
+			return getRuleContext(ExpressionContext.class,0);
 		}
 		public TerminalNode LPAREN() { return getToken(CodeCraftGrammarParser.LPAREN, 0); }
 		public ConditionContext(ParserRuleContext parent, int invokingState) {
@@ -1210,9 +1209,9 @@ public class CodeCraftGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(179); match(LPAREN);
-			setState(180); booleanExpression();
-			setState(181); match(RPAREN);
+			setState(164); match(LPAREN);
+			setState(165); expression(0);
+			setState(166); match(RPAREN);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1254,9 +1253,9 @@ public class CodeCraftGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(183); match(UNTIL);
-			setState(184); condition();
-			setState(185); block();
+			setState(168); match(UNTIL);
+			setState(169); condition();
+			setState(170); block();
 			}
 		}
 		catch (RecognitionException re) {
@@ -1300,11 +1299,11 @@ public class CodeCraftGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(187); match(EXECUTE);
-			setState(188); block();
-			setState(189); match(UNTIL);
-			setState(190); condition();
-			setState(191); match(SEMI);
+			setState(172); match(EXECUTE);
+			setState(173); block();
+			setState(174); match(UNTIL);
+			setState(175); condition();
+			setState(176); match(SEMI);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1325,11 +1324,11 @@ public class CodeCraftGrammarParser extends Parser {
 		}
 		public List<TerminalNode> SEMI() { return getTokens(CodeCraftGrammarParser.SEMI); }
 		public TerminalNode RPAREN() { return getToken(CodeCraftGrammarParser.RPAREN, 0); }
-		public BooleanExpressionContext booleanExpression() {
-			return getRuleContext(BooleanExpressionContext.class,0);
-		}
 		public AssignmentStatementContext assignmentStatement(int i) {
 			return getRuleContext(AssignmentStatementContext.class,i);
+		}
+		public ExpressionContext expression() {
+			return getRuleContext(ExpressionContext.class,0);
 		}
 		public BlockContext block() {
 			return getRuleContext(BlockContext.class,0);
@@ -1358,15 +1357,15 @@ public class CodeCraftGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(193); match(AS);
-			setState(194); match(LPAREN);
-			setState(195); assignmentStatement();
-			setState(196); match(SEMI);
-			setState(197); booleanExpression();
-			setState(198); match(SEMI);
-			setState(199); assignmentStatement();
-			setState(200); match(RPAREN);
-			setState(201); block();
+			setState(178); match(AS);
+			setState(179); match(LPAREN);
+			setState(180); assignmentStatement();
+			setState(181); match(SEMI);
+			setState(182); expression(0);
+			setState(183); match(SEMI);
+			setState(184); assignmentStatement();
+			setState(185); match(RPAREN);
+			setState(186); block();
 			}
 		}
 		catch (RecognitionException re) {
@@ -1406,9 +1405,9 @@ public class CodeCraftGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(203); match(REPLY);
-			setState(204); expression();
-			setState(205); match(SEMI);
+			setState(188); match(REPLY);
+			setState(189); expression(0);
+			setState(190); match(SEMI);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1423,14 +1422,35 @@ public class CodeCraftGrammarParser extends Parser {
 	}
 
 	public static class ExpressionContext extends ParserRuleContext {
-		public ExpressionContext(ParserRuleContext parent, int invokingState) {
+		public int _p;
+		public ExpressionContext(ParserRuleContext parent, int invokingState) { super(parent, invokingState); }
+		public ExpressionContext(ParserRuleContext parent, int invokingState, int _p) {
 			super(parent, invokingState);
+			this._p = _p;
 		}
 		@Override public int getRuleIndex() { return RULE_expression; }
 	 
 		public ExpressionContext() { }
 		public void copyFrom(ExpressionContext ctx) {
 			super.copyFrom(ctx);
+			this._p = ctx._p;
+		}
+	}
+	public static class AndExprContext extends ExpressionContext {
+		public ExpressionContext expression(int i) {
+			return getRuleContext(ExpressionContext.class,i);
+		}
+		public List<ExpressionContext> expression() {
+			return getRuleContexts(ExpressionContext.class);
+		}
+		public AndExprContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterAndExpr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitAndExpr(this);
 		}
 	}
 	public static class StringExprContext extends ExpressionContext {
@@ -1445,24 +1465,11 @@ public class CodeCraftGrammarParser extends Parser {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitStringExpr(this);
 		}
 	}
-	public static class NumExprContext extends ExpressionContext {
-		public NumExpressionContext numExpression() {
-			return getRuleContext(NumExpressionContext.class,0);
-		}
-		public NumExprContext(ExpressionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterNumExpr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitNumExpr(this);
-		}
-	}
 	public static class FuncCallExprContext extends ExpressionContext {
-		public FunctionCallStatementContext functionCallStatement() {
-			return getRuleContext(FunctionCallStatementContext.class,0);
+		public ActualParametersContext actualParameters() {
+			return getRuleContext(ActualParametersContext.class,0);
 		}
+		public TerminalNode ID() { return getToken(CodeCraftGrammarParser.ID, 0); }
 		public FuncCallExprContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -1497,10 +1504,20 @@ public class CodeCraftGrammarParser extends Parser {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitNullExpr(this);
 		}
 	}
-	public static class BoolExprContext extends ExpressionContext {
-		public BooleanExpressionContext booleanExpression() {
-			return getRuleContext(BooleanExpressionContext.class,0);
+	public static class FloatExprContext extends ExpressionContext {
+		public TerminalNode FloatingPointLiteral() { return getToken(CodeCraftGrammarParser.FloatingPointLiteral, 0); }
+		public FloatExprContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterFloatExpr(this);
 		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitFloatExpr(this);
+		}
+	}
+	public static class BoolExprContext extends ExpressionContext {
+		public TerminalNode BooleanLiteral() { return getToken(CodeCraftGrammarParser.BooleanLiteral, 0); }
 		public BoolExprContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -1509,6 +1526,131 @@ public class CodeCraftGrammarParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitBoolExpr(this);
+		}
+	}
+	public static class BangExprContext extends ExpressionContext {
+		public ExpressionContext expression() {
+			return getRuleContext(ExpressionContext.class,0);
+		}
+		public BangExprContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterBangExpr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitBangExpr(this);
+		}
+	}
+	public static class MultdivmodExprContext extends ExpressionContext {
+		public ExpressionContext expression(int i) {
+			return getRuleContext(ExpressionContext.class,i);
+		}
+		public List<ExpressionContext> expression() {
+			return getRuleContexts(ExpressionContext.class);
+		}
+		public MultdivmodExprContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterMultdivmodExpr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitMultdivmodExpr(this);
+		}
+	}
+	public static class OrExprContext extends ExpressionContext {
+		public ExpressionContext expression(int i) {
+			return getRuleContext(ExpressionContext.class,i);
+		}
+		public List<ExpressionContext> expression() {
+			return getRuleContexts(ExpressionContext.class);
+		}
+		public OrExprContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterOrExpr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitOrExpr(this);
+		}
+	}
+	public static class AddminusExprContext extends ExpressionContext {
+		public ExpressionContext expression(int i) {
+			return getRuleContext(ExpressionContext.class,i);
+		}
+		public List<ExpressionContext> expression() {
+			return getRuleContexts(ExpressionContext.class);
+		}
+		public AddminusExprContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterAddminusExpr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitAddminusExpr(this);
+		}
+	}
+	public static class IntExprContext extends ExpressionContext {
+		public TerminalNode IntegerLiteral() { return getToken(CodeCraftGrammarParser.IntegerLiteral, 0); }
+		public IntExprContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterIntExpr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitIntExpr(this);
+		}
+	}
+	public static class ParensExprContext extends ExpressionContext {
+		public ExpressionContext expression() {
+			return getRuleContext(ExpressionContext.class,0);
+		}
+		public ParensExprContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterParensExpr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitParensExpr(this);
+		}
+	}
+	public static class RelationalExprContext extends ExpressionContext {
+		public ExpressionContext expression(int i) {
+			return getRuleContext(ExpressionContext.class,i);
+		}
+		public List<ExpressionContext> expression() {
+			return getRuleContexts(ExpressionContext.class);
+		}
+		public RelationalExprContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterRelationalExpr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitRelationalExpr(this);
+		}
+	}
+	public static class EqualityExprContext extends ExpressionContext {
+		public ExpressionContext expression(int i) {
+			return getRuleContext(ExpressionContext.class,i);
+		}
+		public List<ExpressionContext> expression() {
+			return getRuleContexts(ExpressionContext.class);
+		}
+		public EqualityExprContext(ExpressionContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterEqualityExpr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitEqualityExpr(this);
 		}
 	}
 	public static class CharExprContext extends ExpressionContext {
@@ -1524,67 +1666,218 @@ public class CodeCraftGrammarParser extends Parser {
 		}
 	}
 
-	public final ExpressionContext expression() throws RecognitionException {
-		ExpressionContext _localctx = new ExpressionContext(_ctx, getState());
-		enterRule(_localctx, 40, RULE_expression);
+	public final ExpressionContext expression(int _p) throws RecognitionException {
+		ParserRuleContext _parentctx = _ctx;
+		int _parentState = getState();
+		ExpressionContext _localctx = new ExpressionContext(_ctx, _parentState, _p);
+		ExpressionContext _prevctx = _localctx;
+		int _startState = 40;
+		enterRecursionRule(_localctx, RULE_expression);
+		int _la;
 		try {
-			setState(214);
+			int _alt;
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(208);
 			switch ( getInterpreter().adaptivePredict(_input,11,_ctx) ) {
 			case 1:
-				_localctx = new StringExprContext(_localctx);
-				enterOuterAlt(_localctx, 1);
 				{
-				setState(207); match(StringLiteral);
+				_localctx = new BangExprContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+
+				setState(193); match(BANG);
+				setState(194); expression(16);
 				}
 				break;
 
 			case 2:
-				_localctx = new CharExprContext(_localctx);
-				enterOuterAlt(_localctx, 2);
 				{
-				setState(208); match(CharacterLiteral);
+				_localctx = new ParensExprContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(195); match(LPAREN);
+				setState(196); expression(0);
+				setState(197); match(RPAREN);
 				}
 				break;
 
 			case 3:
-				_localctx = new NumExprContext(_localctx);
-				enterOuterAlt(_localctx, 3);
 				{
-				setState(209); numExpression();
+				_localctx = new IntExprContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(199); match(IntegerLiteral);
 				}
 				break;
 
 			case 4:
-				_localctx = new BoolExprContext(_localctx);
-				enterOuterAlt(_localctx, 4);
 				{
-				setState(210); booleanExpression();
+				_localctx = new BoolExprContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(200); match(BooleanLiteral);
 				}
 				break;
 
 			case 5:
-				_localctx = new FuncCallExprContext(_localctx);
-				enterOuterAlt(_localctx, 5);
 				{
-				setState(211); functionCallStatement();
+				_localctx = new FloatExprContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(201); match(FloatingPointLiteral);
 				}
 				break;
 
 			case 6:
-				_localctx = new IdExprContext(_localctx);
-				enterOuterAlt(_localctx, 6);
 				{
-				setState(212); match(ID);
+				_localctx = new StringExprContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(202); match(StringLiteral);
 				}
 				break;
 
 			case 7:
+				{
+				_localctx = new CharExprContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(203); match(CharacterLiteral);
+				}
+				break;
+
+			case 8:
+				{
+				_localctx = new FuncCallExprContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(204); match(ID);
+				setState(205); actualParameters();
+				}
+				break;
+
+			case 9:
+				{
+				_localctx = new IdExprContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(206); match(ID);
+				}
+				break;
+
+			case 10:
+				{
 				_localctx = new NullExprContext(_localctx);
-				enterOuterAlt(_localctx, 7);
-				{
-				setState(213); match(NULL);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(207); match(NULL);
 				}
 				break;
+			}
+			_ctx.stop = _input.LT(-1);
+			setState(230);
+			_errHandler.sync(this);
+			_alt = getInterpreter().adaptivePredict(_input,13,_ctx);
+			while ( _alt!=2 && _alt!=-1 ) {
+				if ( _alt==1 ) {
+					if ( _parseListeners!=null ) triggerExitRuleEvent();
+					_prevctx = _localctx;
+					{
+					setState(228);
+					switch ( getInterpreter().adaptivePredict(_input,12,_ctx) ) {
+					case 1:
+						{
+						_localctx = new MultdivmodExprContext(new ExpressionContext(_parentctx, _parentState, _p));
+						pushNewRecursionContext(_localctx, _startState, RULE_expression);
+						setState(210);
+						if (!(14 >= _localctx._p)) throw new FailedPredicateException(this, "14 >= $_p");
+						setState(211);
+						_la = _input.LA(1);
+						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << MUL) | (1L << DIV) | (1L << MOD))) != 0)) ) {
+						_errHandler.recoverInline(this);
+						}
+						consume();
+						setState(212); expression(15);
+						}
+						break;
+
+					case 2:
+						{
+						_localctx = new AddminusExprContext(new ExpressionContext(_parentctx, _parentState, _p));
+						pushNewRecursionContext(_localctx, _startState, RULE_expression);
+						setState(213);
+						if (!(13 >= _localctx._p)) throw new FailedPredicateException(this, "13 >= $_p");
+						setState(214);
+						_la = _input.LA(1);
+						if ( !(_la==ADD || _la==SUB) ) {
+						_errHandler.recoverInline(this);
+						}
+						consume();
+						setState(215); expression(14);
+						}
+						break;
+
+					case 3:
+						{
+						_localctx = new RelationalExprContext(new ExpressionContext(_parentctx, _parentState, _p));
+						pushNewRecursionContext(_localctx, _startState, RULE_expression);
+						setState(216);
+						if (!(12 >= _localctx._p)) throw new FailedPredicateException(this, "12 >= $_p");
+						setState(217);
+						_la = _input.LA(1);
+						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << GT) | (1L << LT) | (1L << LE) | (1L << GE))) != 0)) ) {
+						_errHandler.recoverInline(this);
+						}
+						consume();
+						setState(218); expression(13);
+						}
+						break;
+
+					case 4:
+						{
+						_localctx = new EqualityExprContext(new ExpressionContext(_parentctx, _parentState, _p));
+						pushNewRecursionContext(_localctx, _startState, RULE_expression);
+						setState(219);
+						if (!(11 >= _localctx._p)) throw new FailedPredicateException(this, "11 >= $_p");
+						setState(220);
+						_la = _input.LA(1);
+						if ( !(_la==EQUAL || _la==NOTEQUAL) ) {
+						_errHandler.recoverInline(this);
+						}
+						consume();
+						setState(221); expression(12);
+						}
+						break;
+
+					case 5:
+						{
+						_localctx = new AndExprContext(new ExpressionContext(_parentctx, _parentState, _p));
+						pushNewRecursionContext(_localctx, _startState, RULE_expression);
+						setState(222);
+						if (!(10 >= _localctx._p)) throw new FailedPredicateException(this, "10 >= $_p");
+						setState(223); match(AND);
+						setState(224); expression(11);
+						}
+						break;
+
+					case 6:
+						{
+						_localctx = new OrExprContext(new ExpressionContext(_parentctx, _parentState, _p));
+						pushNewRecursionContext(_localctx, _startState, RULE_expression);
+						setState(225);
+						if (!(9 >= _localctx._p)) throw new FailedPredicateException(this, "9 >= $_p");
+						setState(226); match(OR);
+						setState(227); expression(10);
+						}
+						break;
+					}
+					} 
+				}
+				setState(232);
+				_errHandler.sync(this);
+				_alt = getInterpreter().adaptivePredict(_input,13,_ctx);
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -1593,1061 +1886,111 @@ public class CodeCraftGrammarParser extends Parser {
 			_errHandler.recover(this, re);
 		}
 		finally {
-			exitRule();
+			unrollRecursionContexts(_parentctx);
 		}
 		return _localctx;
 	}
 
-	public static class NumExpressionContext extends ParserRuleContext {
-		public NumExpressionContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
+	public boolean sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
+		switch (ruleIndex) {
+		case 20: return expression_sempred((ExpressionContext)_localctx, predIndex);
 		}
-		@Override public int getRuleIndex() { return RULE_numExpression; }
-	 
-		public NumExpressionContext() { }
-		public void copyFrom(NumExpressionContext ctx) {
-			super.copyFrom(ctx);
-		}
+		return true;
 	}
-	public static class SubContext extends NumExpressionContext {
-		public NumExpressionContext numExpression() {
-			return getRuleContext(NumExpressionContext.class,0);
-		}
-		public NumTermContext numTerm() {
-			return getRuleContext(NumTermContext.class,0);
-		}
-		public TerminalNode SUB() { return getToken(CodeCraftGrammarParser.SUB, 0); }
-		public SubContext(NumExpressionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterSub(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitSub(this);
-		}
-	}
-	public static class TermContext extends NumExpressionContext {
-		public NumTermContext numTerm() {
-			return getRuleContext(NumTermContext.class,0);
-		}
-		public TermContext(NumExpressionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterTerm(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitTerm(this);
-		}
-	}
-	public static class AddContext extends NumExpressionContext {
-		public NumExpressionContext numExpression() {
-			return getRuleContext(NumExpressionContext.class,0);
-		}
-		public NumTermContext numTerm() {
-			return getRuleContext(NumTermContext.class,0);
-		}
-		public TerminalNode ADD() { return getToken(CodeCraftGrammarParser.ADD, 0); }
-		public AddContext(NumExpressionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterAdd(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitAdd(this);
-		}
-	}
+	private boolean expression_sempred(ExpressionContext _localctx, int predIndex) {
+		switch (predIndex) {
+		case 0: return 14 >= _localctx._p;
 
-	public final NumExpressionContext numExpression() throws RecognitionException {
-		NumExpressionContext _localctx = new NumExpressionContext(_ctx, getState());
-		enterRule(_localctx, 42, RULE_numExpression);
-		try {
-			setState(225);
-			switch ( getInterpreter().adaptivePredict(_input,12,_ctx) ) {
-			case 1:
-				_localctx = new TermContext(_localctx);
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(216); numTerm();
-				}
-				break;
+		case 1: return 13 >= _localctx._p;
 
-			case 2:
-				_localctx = new AddContext(_localctx);
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(217); numTerm();
-				setState(218); match(ADD);
-				setState(219); numExpression();
-				}
-				break;
+		case 2: return 12 >= _localctx._p;
 
-			case 3:
-				_localctx = new SubContext(_localctx);
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(221); numTerm();
-				setState(222); match(SUB);
-				setState(223); numExpression();
-				}
-				break;
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
+		case 3: return 11 >= _localctx._p;
 
-	public static class NumTermContext extends ParserRuleContext {
-		public NumTermContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_numTerm; }
-	 
-		public NumTermContext() { }
-		public void copyFrom(NumTermContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	public static class ModContext extends NumTermContext {
-		public NumFactorContext numFactor() {
-			return getRuleContext(NumFactorContext.class,0);
-		}
-		public NumTermContext numTerm() {
-			return getRuleContext(NumTermContext.class,0);
-		}
-		public TerminalNode MOD() { return getToken(CodeCraftGrammarParser.MOD, 0); }
-		public ModContext(NumTermContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterMod(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitMod(this);
-		}
-	}
-	public static class DivContext extends NumTermContext {
-		public TerminalNode DIV() { return getToken(CodeCraftGrammarParser.DIV, 0); }
-		public NumFactorContext numFactor() {
-			return getRuleContext(NumFactorContext.class,0);
-		}
-		public NumTermContext numTerm() {
-			return getRuleContext(NumTermContext.class,0);
-		}
-		public DivContext(NumTermContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterDiv(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitDiv(this);
-		}
-	}
-	public static class FactorContext extends NumTermContext {
-		public NumFactorContext numFactor() {
-			return getRuleContext(NumFactorContext.class,0);
-		}
-		public FactorContext(NumTermContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterFactor(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitFactor(this);
-		}
-	}
-	public static class MulContext extends NumTermContext {
-		public TerminalNode MUL() { return getToken(CodeCraftGrammarParser.MUL, 0); }
-		public NumFactorContext numFactor() {
-			return getRuleContext(NumFactorContext.class,0);
-		}
-		public NumTermContext numTerm() {
-			return getRuleContext(NumTermContext.class,0);
-		}
-		public MulContext(NumTermContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterMul(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitMul(this);
-		}
-	}
+		case 4: return 10 >= _localctx._p;
 
-	public final NumTermContext numTerm() throws RecognitionException {
-		NumTermContext _localctx = new NumTermContext(_ctx, getState());
-		enterRule(_localctx, 44, RULE_numTerm);
-		try {
-			setState(240);
-			switch ( getInterpreter().adaptivePredict(_input,13,_ctx) ) {
-			case 1:
-				_localctx = new FactorContext(_localctx);
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(227); numFactor();
-				}
-				break;
-
-			case 2:
-				_localctx = new MulContext(_localctx);
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(228); numFactor();
-				setState(229); match(MUL);
-				setState(230); numTerm();
-				}
-				break;
-
-			case 3:
-				_localctx = new DivContext(_localctx);
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(232); numFactor();
-				setState(233); match(DIV);
-				setState(234); numTerm();
-				}
-				break;
-
-			case 4:
-				_localctx = new ModContext(_localctx);
-				enterOuterAlt(_localctx, 4);
-				{
-				setState(236); numFactor();
-				setState(237); match(MOD);
-				setState(238); numTerm();
-				}
-				break;
-			}
+		case 5: return 9 >= _localctx._p;
 		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class NumFactorContext extends ParserRuleContext {
-		public NumFactorContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_numFactor; }
-	 
-		public NumFactorContext() { }
-		public void copyFrom(NumFactorContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	public static class NumVarContext extends NumFactorContext {
-		public TerminalNode ID() { return getToken(CodeCraftGrammarParser.ID, 0); }
-		public NumVarContext(NumFactorContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterNumVar(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitNumVar(this);
-		}
-	}
-	public static class FactorIntContext extends NumFactorContext {
-		public TerminalNode IntegerLiteral() { return getToken(CodeCraftGrammarParser.IntegerLiteral, 0); }
-		public FactorIntContext(NumFactorContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterFactorInt(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitFactorInt(this);
-		}
-	}
-	public static class ParensContext extends NumFactorContext {
-		public TerminalNode RPAREN() { return getToken(CodeCraftGrammarParser.RPAREN, 0); }
-		public NumExpressionContext numExpression() {
-			return getRuleContext(NumExpressionContext.class,0);
-		}
-		public TerminalNode LPAREN() { return getToken(CodeCraftGrammarParser.LPAREN, 0); }
-		public ParensContext(NumFactorContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterParens(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitParens(this);
-		}
-	}
-	public static class FactorFloatContext extends NumFactorContext {
-		public TerminalNode FloatingPointLiteral() { return getToken(CodeCraftGrammarParser.FloatingPointLiteral, 0); }
-		public FactorFloatContext(NumFactorContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterFactorFloat(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitFactorFloat(this);
-		}
-	}
-	public static class FuncNumExprContext extends NumFactorContext {
-		public FunctionCallStatementContext functionCallStatement() {
-			return getRuleContext(FunctionCallStatementContext.class,0);
-		}
-		public FuncNumExprContext(NumFactorContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterFuncNumExpr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitFuncNumExpr(this);
-		}
-	}
-
-	public final NumFactorContext numFactor() throws RecognitionException {
-		NumFactorContext _localctx = new NumFactorContext(_ctx, getState());
-		enterRule(_localctx, 46, RULE_numFactor);
-		try {
-			setState(250);
-			switch ( getInterpreter().adaptivePredict(_input,14,_ctx) ) {
-			case 1:
-				_localctx = new ParensContext(_localctx);
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(242); match(LPAREN);
-				setState(243); numExpression();
-				setState(244); match(RPAREN);
-				}
-				break;
-
-			case 2:
-				_localctx = new FactorIntContext(_localctx);
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(246); match(IntegerLiteral);
-				}
-				break;
-
-			case 3:
-				_localctx = new FactorFloatContext(_localctx);
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(247); match(FloatingPointLiteral);
-				}
-				break;
-
-			case 4:
-				_localctx = new FuncNumExprContext(_localctx);
-				enterOuterAlt(_localctx, 4);
-				{
-				setState(248); functionCallStatement();
-				}
-				break;
-
-			case 5:
-				_localctx = new NumVarContext(_localctx);
-				enterOuterAlt(_localctx, 5);
-				{
-				setState(249); match(ID);
-				}
-				break;
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class BooleanExpressionContext extends ParserRuleContext {
-		public BooleanExpressionContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_booleanExpression; }
-	 
-		public BooleanExpressionContext() { }
-		public void copyFrom(BooleanExpressionContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	public static class LogicalContext extends BooleanExpressionContext {
-		public BooleanLogicalContext booleanLogical() {
-			return getRuleContext(BooleanLogicalContext.class,0);
-		}
-		public LogicalContext(BooleanExpressionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterLogical(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitLogical(this);
-		}
-	}
-	public static class RelationalContext extends BooleanExpressionContext {
-		public RelationalOperatorContext relationalOperator() {
-			return getRuleContext(RelationalOperatorContext.class,0);
-		}
-		public List<NumExpressionContext> numExpression() {
-			return getRuleContexts(NumExpressionContext.class);
-		}
-		public NumExpressionContext numExpression(int i) {
-			return getRuleContext(NumExpressionContext.class,i);
-		}
-		public RelationalContext(BooleanExpressionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterRelational(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitRelational(this);
-		}
-	}
-	public static class EqualContext extends BooleanExpressionContext {
-		public BooleanLogicalContext booleanLogical() {
-			return getRuleContext(BooleanLogicalContext.class,0);
-		}
-		public BooleanExpressionContext booleanExpression() {
-			return getRuleContext(BooleanExpressionContext.class,0);
-		}
-		public TerminalNode EQUAL() { return getToken(CodeCraftGrammarParser.EQUAL, 0); }
-		public EqualContext(BooleanExpressionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterEqual(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitEqual(this);
-		}
-	}
-	public static class NotequalContext extends BooleanExpressionContext {
-		public BooleanLogicalContext booleanLogical() {
-			return getRuleContext(BooleanLogicalContext.class,0);
-		}
-		public BooleanExpressionContext booleanExpression() {
-			return getRuleContext(BooleanExpressionContext.class,0);
-		}
-		public TerminalNode NOTEQUAL() { return getToken(CodeCraftGrammarParser.NOTEQUAL, 0); }
-		public NotequalContext(BooleanExpressionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterNotequal(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitNotequal(this);
-		}
-	}
-
-	public final BooleanExpressionContext booleanExpression() throws RecognitionException {
-		BooleanExpressionContext _localctx = new BooleanExpressionContext(_ctx, getState());
-		enterRule(_localctx, 48, RULE_booleanExpression);
-		try {
-			setState(265);
-			switch ( getInterpreter().adaptivePredict(_input,15,_ctx) ) {
-			case 1:
-				_localctx = new RelationalContext(_localctx);
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(252); numExpression();
-				setState(253); relationalOperator();
-				setState(254); numExpression();
-				}
-				break;
-
-			case 2:
-				_localctx = new EqualContext(_localctx);
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(256); booleanLogical();
-				setState(257); match(EQUAL);
-				setState(258); booleanExpression();
-				}
-				break;
-
-			case 3:
-				_localctx = new NotequalContext(_localctx);
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(260); booleanLogical();
-				setState(261); match(NOTEQUAL);
-				setState(262); booleanExpression();
-				}
-				break;
-
-			case 4:
-				_localctx = new LogicalContext(_localctx);
-				enterOuterAlt(_localctx, 4);
-				{
-				setState(264); booleanLogical();
-				}
-				break;
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class RelationalOperatorContext extends ParserRuleContext {
-		public RelationalOperatorContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_relationalOperator; }
-	 
-		public RelationalOperatorContext() { }
-		public void copyFrom(RelationalOperatorContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	public static class OpGreaterequalContext extends RelationalOperatorContext {
-		public TerminalNode GE() { return getToken(CodeCraftGrammarParser.GE, 0); }
-		public OpGreaterequalContext(RelationalOperatorContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterOpGreaterequal(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitOpGreaterequal(this);
-		}
-	}
-	public static class OpGreaterContext extends RelationalOperatorContext {
-		public TerminalNode GT() { return getToken(CodeCraftGrammarParser.GT, 0); }
-		public OpGreaterContext(RelationalOperatorContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterOpGreater(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitOpGreater(this);
-		}
-	}
-	public static class OpLessContext extends RelationalOperatorContext {
-		public TerminalNode LT() { return getToken(CodeCraftGrammarParser.LT, 0); }
-		public OpLessContext(RelationalOperatorContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterOpLess(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitOpLess(this);
-		}
-	}
-	public static class OpLessequalContext extends RelationalOperatorContext {
-		public TerminalNode LE() { return getToken(CodeCraftGrammarParser.LE, 0); }
-		public OpLessequalContext(RelationalOperatorContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterOpLessequal(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitOpLessequal(this);
-		}
-	}
-	public static class OpEqualContext extends RelationalOperatorContext {
-		public TerminalNode EQUAL() { return getToken(CodeCraftGrammarParser.EQUAL, 0); }
-		public OpEqualContext(RelationalOperatorContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterOpEqual(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitOpEqual(this);
-		}
-	}
-	public static class OpNotequalContext extends RelationalOperatorContext {
-		public TerminalNode NOTEQUAL() { return getToken(CodeCraftGrammarParser.NOTEQUAL, 0); }
-		public OpNotequalContext(RelationalOperatorContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterOpNotequal(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitOpNotequal(this);
-		}
-	}
-
-	public final RelationalOperatorContext relationalOperator() throws RecognitionException {
-		RelationalOperatorContext _localctx = new RelationalOperatorContext(_ctx, getState());
-		enterRule(_localctx, 50, RULE_relationalOperator);
-		try {
-			setState(273);
-			switch (_input.LA(1)) {
-			case EQUAL:
-				_localctx = new OpEqualContext(_localctx);
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(267); match(EQUAL);
-				}
-				break;
-			case NOTEQUAL:
-				_localctx = new OpNotequalContext(_localctx);
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(268); match(NOTEQUAL);
-				}
-				break;
-			case GE:
-				_localctx = new OpGreaterequalContext(_localctx);
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(269); match(GE);
-				}
-				break;
-			case LE:
-				_localctx = new OpLessequalContext(_localctx);
-				enterOuterAlt(_localctx, 4);
-				{
-				setState(270); match(LE);
-				}
-				break;
-			case GT:
-				_localctx = new OpGreaterContext(_localctx);
-				enterOuterAlt(_localctx, 5);
-				{
-				setState(271); match(GT);
-				}
-				break;
-			case LT:
-				_localctx = new OpLessContext(_localctx);
-				enterOuterAlt(_localctx, 6);
-				{
-				setState(272); match(LT);
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class BooleanLogicalContext extends ParserRuleContext {
-		public BooleanLogicalContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_booleanLogical; }
-	 
-		public BooleanLogicalContext() { }
-		public void copyFrom(BooleanLogicalContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	public static class BoolTermContext extends BooleanLogicalContext {
-		public BooleanTermContext booleanTerm() {
-			return getRuleContext(BooleanTermContext.class,0);
-		}
-		public BoolTermContext(BooleanLogicalContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterBoolTerm(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitBoolTerm(this);
-		}
-	}
-	public static class OrContext extends BooleanLogicalContext {
-		public BooleanLogicalContext booleanLogical() {
-			return getRuleContext(BooleanLogicalContext.class,0);
-		}
-		public TerminalNode OR() { return getToken(CodeCraftGrammarParser.OR, 0); }
-		public BooleanTermContext booleanTerm() {
-			return getRuleContext(BooleanTermContext.class,0);
-		}
-		public OrContext(BooleanLogicalContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterOr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitOr(this);
-		}
-	}
-
-	public final BooleanLogicalContext booleanLogical() throws RecognitionException {
-		BooleanLogicalContext _localctx = new BooleanLogicalContext(_ctx, getState());
-		enterRule(_localctx, 52, RULE_booleanLogical);
-		try {
-			setState(280);
-			switch ( getInterpreter().adaptivePredict(_input,17,_ctx) ) {
-			case 1:
-				_localctx = new OrContext(_localctx);
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(275); booleanTerm();
-				setState(276); match(OR);
-				setState(277); booleanLogical();
-				}
-				break;
-
-			case 2:
-				_localctx = new BoolTermContext(_localctx);
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(279); booleanTerm();
-				}
-				break;
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class BooleanTermContext extends ParserRuleContext {
-		public BooleanTermContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_booleanTerm; }
-	 
-		public BooleanTermContext() { }
-		public void copyFrom(BooleanTermContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	public static class BoolFactorContext extends BooleanTermContext {
-		public BooleanFactorContext booleanFactor() {
-			return getRuleContext(BooleanFactorContext.class,0);
-		}
-		public BoolFactorContext(BooleanTermContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterBoolFactor(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitBoolFactor(this);
-		}
-	}
-	public static class AndContext extends BooleanTermContext {
-		public BooleanFactorContext booleanFactor() {
-			return getRuleContext(BooleanFactorContext.class,0);
-		}
-		public TerminalNode AND() { return getToken(CodeCraftGrammarParser.AND, 0); }
-		public BooleanTermContext booleanTerm() {
-			return getRuleContext(BooleanTermContext.class,0);
-		}
-		public AndContext(BooleanTermContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterAnd(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitAnd(this);
-		}
-	}
-
-	public final BooleanTermContext booleanTerm() throws RecognitionException {
-		BooleanTermContext _localctx = new BooleanTermContext(_ctx, getState());
-		enterRule(_localctx, 54, RULE_booleanTerm);
-		try {
-			setState(287);
-			switch ( getInterpreter().adaptivePredict(_input,18,_ctx) ) {
-			case 1:
-				_localctx = new AndContext(_localctx);
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(282); booleanFactor();
-				setState(283); match(AND);
-				setState(284); booleanTerm();
-				}
-				break;
-
-			case 2:
-				_localctx = new BoolFactorContext(_localctx);
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(286); booleanFactor();
-				}
-				break;
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class BooleanFactorContext extends ParserRuleContext {
-		public BooleanFactorContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_booleanFactor; }
-	 
-		public BooleanFactorContext() { }
-		public void copyFrom(BooleanFactorContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	public static class BoolParenContext extends BooleanFactorContext {
-		public TerminalNode RPAREN() { return getToken(CodeCraftGrammarParser.RPAREN, 0); }
-		public BooleanExpressionContext booleanExpression() {
-			return getRuleContext(BooleanExpressionContext.class,0);
-		}
-		public TerminalNode LPAREN() { return getToken(CodeCraftGrammarParser.LPAREN, 0); }
-		public BoolParenContext(BooleanFactorContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterBoolParen(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitBoolParen(this);
-		}
-	}
-	public static class BoolVarContext extends BooleanFactorContext {
-		public TerminalNode ID() { return getToken(CodeCraftGrammarParser.ID, 0); }
-		public BoolVarContext(BooleanFactorContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterBoolVar(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitBoolVar(this);
-		}
-	}
-	public static class BoolContext extends BooleanFactorContext {
-		public TerminalNode BooleanLiteral() { return getToken(CodeCraftGrammarParser.BooleanLiteral, 0); }
-		public BoolContext(BooleanFactorContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterBool(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitBool(this);
-		}
-	}
-	public static class BangContext extends BooleanFactorContext {
-		public TerminalNode BANG() { return getToken(CodeCraftGrammarParser.BANG, 0); }
-		public BooleanExpressionContext booleanExpression() {
-			return getRuleContext(BooleanExpressionContext.class,0);
-		}
-		public BangContext(BooleanFactorContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).enterBang(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitBang(this);
-		}
-	}
-
-	public final BooleanFactorContext booleanFactor() throws RecognitionException {
-		BooleanFactorContext _localctx = new BooleanFactorContext(_ctx, getState());
-		enterRule(_localctx, 56, RULE_booleanFactor);
-		try {
-			setState(297);
-			switch (_input.LA(1)) {
-			case LPAREN:
-				_localctx = new BoolParenContext(_localctx);
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(289); match(LPAREN);
-				setState(290); booleanExpression();
-				setState(291); match(RPAREN);
-				}
-				break;
-			case BANG:
-				_localctx = new BangContext(_localctx);
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(293); match(BANG);
-				setState(294); booleanExpression();
-				}
-				break;
-			case BooleanLiteral:
-				_localctx = new BoolContext(_localctx);
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(295); match(BooleanLiteral);
-				}
-				break;
-			case ID:
-				_localctx = new BoolVarContext(_localctx);
-				enterOuterAlt(_localctx, 4);
-				{
-				setState(296); match(ID);
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
+		return true;
 	}
 
 	public static final String _serializedATN =
-		"\3\uacf5\uee8c\u4f5d\u8b0d\u4a45\u78bd\u1b2f\u3378\3\62\u012e\4\2\t\2"+
+		"\3\uacf5\uee8c\u4f5d\u8b0d\u4a45\u78bd\u1b2f\u3378\3\62\u00ec\4\2\t\2"+
 		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
 		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
-		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
-		"\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36\3\2\7\2>\n\2\f\2\16"+
-		"\2A\13\2\3\2\3\2\7\2E\n\2\f\2\16\2H\13\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3"+
-		"\3\3\4\3\4\3\4\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\7\3\7\5\7^\n\7\3\b\3\b\5"+
-		"\bb\n\b\3\b\3\b\7\bf\n\b\f\b\16\bi\13\b\3\b\3\b\3\t\3\t\3\t\3\n\3\n\7"+
-		"\nr\n\n\f\n\16\nu\13\n\3\n\3\n\3\13\3\13\3\13\3\13\3\13\3\f\3\f\3\f\3"+
-		"\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\5\f\u008f\n\f\3"+
-		"\r\3\r\3\r\3\r\3\16\3\16\3\16\3\16\3\16\3\16\5\16\u009b\n\16\3\17\3\17"+
-		"\5\17\u009f\n\17\3\17\3\17\7\17\u00a3\n\17\f\17\16\17\u00a6\13\17\3\17"+
-		"\3\17\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\5\20\u00b4\n\20"+
+		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\3\2\7\2.\n\2\f\2\16\2\61\13\2"+
+		"\3\2\3\2\7\2\65\n\2\f\2\16\28\13\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3"+
+		"\3\4\3\4\3\4\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\7\3\7\5\7O\n\7\3\b\3\b\5\b"+
+		"S\n\b\3\b\3\b\7\bW\n\b\f\b\16\bZ\13\b\3\b\3\b\3\t\3\t\3\t\3\n\3\n\7\n"+
+		"c\n\n\f\n\16\nf\13\n\3\n\3\n\3\13\3\13\3\13\3\13\3\13\3\f\3\f\3\f\3\f"+
+		"\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\5\f\u0080\n\f\3\r"+
+		"\3\r\3\r\3\r\3\16\3\16\3\16\3\16\3\16\3\16\5\16\u008c\n\16\3\17\3\17\5"+
+		"\17\u0090\n\17\3\17\3\17\7\17\u0094\n\17\f\17\16\17\u0097\13\17\3\17\3"+
+		"\17\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\5\20\u00a5\n\20"+
 		"\3\21\3\21\3\21\3\21\3\22\3\22\3\22\3\22\3\23\3\23\3\23\3\23\3\23\3\23"+
 		"\3\24\3\24\3\24\3\24\3\24\3\24\3\24\3\24\3\24\3\24\3\25\3\25\3\25\3\25"+
-		"\3\26\3\26\3\26\3\26\3\26\3\26\3\26\5\26\u00d9\n\26\3\27\3\27\3\27\3\27"+
-		"\3\27\3\27\3\27\3\27\3\27\5\27\u00e4\n\27\3\30\3\30\3\30\3\30\3\30\3\30"+
-		"\3\30\3\30\3\30\3\30\3\30\3\30\3\30\5\30\u00f3\n\30\3\31\3\31\3\31\3\31"+
-		"\3\31\3\31\3\31\3\31\5\31\u00fd\n\31\3\32\3\32\3\32\3\32\3\32\3\32\3\32"+
-		"\3\32\3\32\3\32\3\32\3\32\3\32\5\32\u010c\n\32\3\33\3\33\3\33\3\33\3\33"+
-		"\3\33\5\33\u0114\n\33\3\34\3\34\3\34\3\34\3\34\5\34\u011b\n\34\3\35\3"+
-		"\35\3\35\3\35\3\35\5\35\u0122\n\35\3\36\3\36\3\36\3\36\3\36\3\36\3\36"+
-		"\3\36\5\36\u012c\n\36\3\36\2\37\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36"+
-		" \"$&(*,.\60\62\64\668:\2\3\3\2\20\24\u0140\2?\3\2\2\2\4K\3\2\2\2\6Q\3"+
-		"\2\2\2\bT\3\2\2\2\nV\3\2\2\2\f]\3\2\2\2\16_\3\2\2\2\20l\3\2\2\2\22o\3"+
-		"\2\2\2\24x\3\2\2\2\26\u008e\3\2\2\2\30\u0090\3\2\2\2\32\u009a\3\2\2\2"+
-		"\34\u009c\3\2\2\2\36\u00b3\3\2\2\2 \u00b5\3\2\2\2\"\u00b9\3\2\2\2$\u00bd"+
-		"\3\2\2\2&\u00c3\3\2\2\2(\u00cd\3\2\2\2*\u00d8\3\2\2\2,\u00e3\3\2\2\2."+
-		"\u00f2\3\2\2\2\60\u00fc\3\2\2\2\62\u010b\3\2\2\2\64\u0113\3\2\2\2\66\u011a"+
-		"\3\2\2\28\u0121\3\2\2\2:\u012b\3\2\2\2<>\5\4\3\2=<\3\2\2\2>A\3\2\2\2?"+
-		"=\3\2\2\2?@\3\2\2\2@B\3\2\2\2A?\3\2\2\2BF\5\24\13\2CE\5\n\6\2DC\3\2\2"+
-		"\2EH\3\2\2\2FD\3\2\2\2FG\3\2\2\2GI\3\2\2\2HF\3\2\2\2IJ\7\2\2\3J\3\3\2"+
-		"\2\2KL\7\5\2\2LM\5\6\4\2MN\7\33\2\2NO\5*\26\2OP\7\31\2\2P\5\3\2\2\2QR"+
-		"\5\b\5\2RS\7/\2\2S\7\3\2\2\2TU\t\2\2\2U\t\3\2\2\2VW\5\f\7\2WX\7/\2\2X"+
-		"Y\5\16\b\2YZ\5\22\n\2Z\13\3\2\2\2[^\5\b\5\2\\^\7\6\2\2][\3\2\2\2]\\\3"+
-		"\2\2\2^\r\3\2\2\2_a\7\25\2\2`b\5\20\t\2a`\3\2\2\2ab\3\2\2\2bg\3\2\2\2"+
-		"cd\7\32\2\2df\5\20\t\2ec\3\2\2\2fi\3\2\2\2ge\3\2\2\2gh\3\2\2\2hj\3\2\2"+
-		"\2ig\3\2\2\2jk\7\26\2\2k\17\3\2\2\2lm\5\b\5\2mn\7/\2\2n\21\3\2\2\2os\7"+
-		"\27\2\2pr\5\26\f\2qp\3\2\2\2ru\3\2\2\2sq\3\2\2\2st\3\2\2\2tv\3\2\2\2u"+
-		"s\3\2\2\2vw\7\30\2\2w\23\3\2\2\2xy\7\6\2\2yz\7\7\2\2z{\5\16\b\2{|\5\22"+
-		"\n\2|\25\3\2\2\2}\u008f\5\22\n\2~\177\5\6\4\2\177\u0080\7\31\2\2\u0080"+
-		"\u008f\3\2\2\2\u0081\u0082\5\30\r\2\u0082\u0083\7\31\2\2\u0083\u008f\3"+
-		"\2\2\2\u0084\u0085\5\32\16\2\u0085\u0086\7\31\2\2\u0086\u008f\3\2\2\2"+
-		"\u0087\u008f\5\36\20\2\u0088\u008f\5\"\22\2\u0089\u008f\5$\23\2\u008a"+
-		"\u008f\5&\24\2\u008b\u008f\5(\25\2\u008c\u008d\7\b\2\2\u008d\u008f\7\31"+
-		"\2\2\u008e}\3\2\2\2\u008e~\3\2\2\2\u008e\u0081\3\2\2\2\u008e\u0084\3\2"+
-		"\2\2\u008e\u0087\3\2\2\2\u008e\u0088\3\2\2\2\u008e\u0089\3\2\2\2\u008e"+
-		"\u008a\3\2\2\2\u008e\u008b\3\2\2\2\u008e\u008c\3\2\2\2\u008f\27\3\2\2"+
-		"\2\u0090\u0091\7/\2\2\u0091\u0092\7\33\2\2\u0092\u0093\5*\26\2\u0093\31"+
-		"\3\2\2\2\u0094\u0095\7/\2\2\u0095\u009b\5\34\17\2\u0096\u0097\7\3\2\2"+
-		"\u0097\u009b\5\34\17\2\u0098\u0099\7\4\2\2\u0099\u009b\5\34\17\2\u009a"+
-		"\u0094\3\2\2\2\u009a\u0096\3\2\2\2\u009a\u0098\3\2\2\2\u009b\33\3\2\2"+
-		"\2\u009c\u009e\7\25\2\2\u009d\u009f\5*\26\2\u009e\u009d\3\2\2\2\u009e"+
-		"\u009f\3\2\2\2\u009f\u00a4\3\2\2\2\u00a0\u00a1\7\32\2\2\u00a1\u00a3\5"+
-		"*\26\2\u00a2\u00a0\3\2\2\2\u00a3\u00a6\3\2\2\2\u00a4\u00a2\3\2\2\2\u00a4"+
-		"\u00a5\3\2\2\2\u00a5\u00a7\3\2\2\2\u00a6\u00a4\3\2\2\2\u00a7\u00a8\7\26"+
-		"\2\2\u00a8\35\3\2\2\2\u00a9\u00aa\7\t\2\2\u00aa\u00ab\5 \21\2\u00ab\u00ac"+
-		"\5\22\n\2\u00ac\u00ad\7\n\2\2\u00ad\u00ae\5\22\n\2\u00ae\u00b4\3\2\2\2"+
-		"\u00af\u00b0\7\t\2\2\u00b0\u00b1\5 \21\2\u00b1\u00b2\5\22\n\2\u00b2\u00b4"+
-		"\3\2\2\2\u00b3\u00a9\3\2\2\2\u00b3\u00af\3\2\2\2\u00b4\37\3\2\2\2\u00b5"+
-		"\u00b6\7\25\2\2\u00b6\u00b7\5\62\32\2\u00b7\u00b8\7\26\2\2\u00b8!\3\2"+
-		"\2\2\u00b9\u00ba\7\13\2\2\u00ba\u00bb\5 \21\2\u00bb\u00bc\5\22\n\2\u00bc"+
-		"#\3\2\2\2\u00bd\u00be\7\f\2\2\u00be\u00bf\5\22\n\2\u00bf\u00c0\7\13\2"+
-		"\2\u00c0\u00c1\5 \21\2\u00c1\u00c2\7\31\2\2\u00c2%\3\2\2\2\u00c3\u00c4"+
-		"\7\r\2\2\u00c4\u00c5\7\25\2\2\u00c5\u00c6\5\30\r\2\u00c6\u00c7\7\31\2"+
-		"\2\u00c7\u00c8\5\62\32\2\u00c8\u00c9\7\31\2\2\u00c9\u00ca\5\30\r\2\u00ca"+
-		"\u00cb\7\26\2\2\u00cb\u00cc\5\22\n\2\u00cc\'\3\2\2\2\u00cd\u00ce\7\16"+
-		"\2\2\u00ce\u00cf\5*\26\2\u00cf\u00d0\7\31\2\2\u00d0)\3\2\2\2\u00d1\u00d9"+
-		"\7-\2\2\u00d2\u00d9\7,\2\2\u00d3\u00d9\5,\27\2\u00d4\u00d9\5\62\32\2\u00d5"+
-		"\u00d9\5\32\16\2\u00d6\u00d9\7/\2\2\u00d7\u00d9\7\17\2\2\u00d8\u00d1\3"+
-		"\2\2\2\u00d8\u00d2\3\2\2\2\u00d8\u00d3\3\2\2\2\u00d8\u00d4\3\2\2\2\u00d8"+
-		"\u00d5\3\2\2\2\u00d8\u00d6\3\2\2\2\u00d8\u00d7\3\2\2\2\u00d9+\3\2\2\2"+
-		"\u00da\u00e4\5.\30\2\u00db\u00dc\5.\30\2\u00dc\u00dd\7%\2\2\u00dd\u00de"+
-		"\5,\27\2\u00de\u00e4\3\2\2\2\u00df\u00e0\5.\30\2\u00e0\u00e1\7&\2\2\u00e1"+
-		"\u00e2\5,\27\2\u00e2\u00e4\3\2\2\2\u00e3\u00da\3\2\2\2\u00e3\u00db\3\2"+
-		"\2\2\u00e3\u00df\3\2\2\2\u00e4-\3\2\2\2\u00e5\u00f3\5\60\31\2\u00e6\u00e7"+
-		"\5\60\31\2\u00e7\u00e8\7\'\2\2\u00e8\u00e9\5.\30\2\u00e9\u00f3\3\2\2\2"+
-		"\u00ea\u00eb\5\60\31\2\u00eb\u00ec\7(\2\2\u00ec\u00ed\5.\30\2\u00ed\u00f3"+
-		"\3\2\2\2\u00ee\u00ef\5\60\31\2\u00ef\u00f0\7)\2\2\u00f0\u00f1\5.\30\2"+
-		"\u00f1\u00f3\3\2\2\2\u00f2\u00e5\3\2\2\2\u00f2\u00e6\3\2\2\2\u00f2\u00ea"+
-		"\3\2\2\2\u00f2\u00ee\3\2\2\2\u00f3/\3\2\2\2\u00f4\u00f5\7\25\2\2\u00f5"+
-		"\u00f6\5,\27\2\u00f6\u00f7\7\26\2\2\u00f7\u00fd\3\2\2\2\u00f8\u00fd\7"+
-		"*\2\2\u00f9\u00fd\7+\2\2\u00fa\u00fd\5\32\16\2\u00fb\u00fd\7/\2\2\u00fc"+
-		"\u00f4\3\2\2\2\u00fc\u00f8\3\2\2\2\u00fc\u00f9\3\2\2\2\u00fc\u00fa\3\2"+
-		"\2\2\u00fc\u00fb\3\2\2\2\u00fd\61\3\2\2\2\u00fe\u00ff\5,\27\2\u00ff\u0100"+
-		"\5\64\33\2\u0100\u0101\5,\27\2\u0101\u010c\3\2\2\2\u0102\u0103\5\66\34"+
-		"\2\u0103\u0104\7\37\2\2\u0104\u0105\5\62\32\2\u0105\u010c\3\2\2\2\u0106"+
-		"\u0107\5\66\34\2\u0107\u0108\7\"\2\2\u0108\u0109\5\62\32\2\u0109\u010c"+
-		"\3\2\2\2\u010a\u010c\5\66\34\2\u010b\u00fe\3\2\2\2\u010b\u0102\3\2\2\2"+
-		"\u010b\u0106\3\2\2\2\u010b\u010a\3\2\2\2\u010c\63\3\2\2\2\u010d\u0114"+
-		"\7\37\2\2\u010e\u0114\7\"\2\2\u010f\u0114\7!\2\2\u0110\u0114\7 \2\2\u0111"+
-		"\u0114\7\34\2\2\u0112\u0114\7\35\2\2\u0113\u010d\3\2\2\2\u0113\u010e\3"+
-		"\2\2\2\u0113\u010f\3\2\2\2\u0113\u0110\3\2\2\2\u0113\u0111\3\2\2\2\u0113"+
-		"\u0112\3\2\2\2\u0114\65\3\2\2\2\u0115\u0116\58\35\2\u0116\u0117\7$\2\2"+
-		"\u0117\u0118\5\66\34\2\u0118\u011b\3\2\2\2\u0119\u011b\58\35\2\u011a\u0115"+
-		"\3\2\2\2\u011a\u0119\3\2\2\2\u011b\67\3\2\2\2\u011c\u011d\5:\36\2\u011d"+
-		"\u011e\7#\2\2\u011e\u011f\58\35\2\u011f\u0122\3\2\2\2\u0120\u0122\5:\36"+
-		"\2\u0121\u011c\3\2\2\2\u0121\u0120\3\2\2\2\u01229\3\2\2\2\u0123\u0124"+
-		"\7\25\2\2\u0124\u0125\5\62\32\2\u0125\u0126\7\26\2\2\u0126\u012c\3\2\2"+
-		"\2\u0127\u0128\7\36\2\2\u0128\u012c\5\62\32\2\u0129\u012c\7.\2\2\u012a"+
-		"\u012c\7/\2\2\u012b\u0123\3\2\2\2\u012b\u0127\3\2\2\2\u012b\u0129\3\2"+
-		"\2\2\u012b\u012a\3\2\2\2\u012c;\3\2\2\2\26?F]ags\u008e\u009a\u009e\u00a4"+
-		"\u00b3\u00d8\u00e3\u00f2\u00fc\u010b\u0113\u011a\u0121\u012b";
+		"\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26"+
+		"\3\26\3\26\5\26\u00d3\n\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26"+
+		"\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\7\26\u00e7\n\26\f\26\16"+
+		"\26\u00ea\13\26\3\26\2\27\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&"+
+		"(*\2\7\3\2\20\24\3\2\')\3\2%&\4\2\34\35 !\4\2\37\37\"\"\u00f9\2/\3\2\2"+
+		"\2\4;\3\2\2\2\6B\3\2\2\2\bE\3\2\2\2\nG\3\2\2\2\fN\3\2\2\2\16P\3\2\2\2"+
+		"\20]\3\2\2\2\22`\3\2\2\2\24i\3\2\2\2\26\177\3\2\2\2\30\u0081\3\2\2\2\32"+
+		"\u008b\3\2\2\2\34\u008d\3\2\2\2\36\u00a4\3\2\2\2 \u00a6\3\2\2\2\"\u00aa"+
+		"\3\2\2\2$\u00ae\3\2\2\2&\u00b4\3\2\2\2(\u00be\3\2\2\2*\u00d2\3\2\2\2,"+
+		".\5\4\3\2-,\3\2\2\2.\61\3\2\2\2/-\3\2\2\2/\60\3\2\2\2\60\62\3\2\2\2\61"+
+		"/\3\2\2\2\62\66\5\24\13\2\63\65\5\n\6\2\64\63\3\2\2\2\658\3\2\2\2\66\64"+
+		"\3\2\2\2\66\67\3\2\2\2\679\3\2\2\28\66\3\2\2\29:\7\2\2\3:\3\3\2\2\2;<"+
+		"\7\5\2\2<=\5\b\5\2=>\7/\2\2>?\7\33\2\2?@\5*\26\2@A\7\31\2\2A\5\3\2\2\2"+
+		"BC\5\b\5\2CD\7/\2\2D\7\3\2\2\2EF\t\2\2\2F\t\3\2\2\2GH\5\f\7\2HI\7/\2\2"+
+		"IJ\5\16\b\2JK\5\22\n\2K\13\3\2\2\2LO\5\b\5\2MO\7\6\2\2NL\3\2\2\2NM\3\2"+
+		"\2\2O\r\3\2\2\2PR\7\25\2\2QS\5\20\t\2RQ\3\2\2\2RS\3\2\2\2SX\3\2\2\2TU"+
+		"\7\32\2\2UW\5\20\t\2VT\3\2\2\2WZ\3\2\2\2XV\3\2\2\2XY\3\2\2\2Y[\3\2\2\2"+
+		"ZX\3\2\2\2[\\\7\26\2\2\\\17\3\2\2\2]^\5\b\5\2^_\7/\2\2_\21\3\2\2\2`d\7"+
+		"\27\2\2ac\5\26\f\2ba\3\2\2\2cf\3\2\2\2db\3\2\2\2de\3\2\2\2eg\3\2\2\2f"+
+		"d\3\2\2\2gh\7\30\2\2h\23\3\2\2\2ij\7\6\2\2jk\7\7\2\2kl\5\16\b\2lm\5\22"+
+		"\n\2m\25\3\2\2\2n\u0080\5\22\n\2op\5\6\4\2pq\7\31\2\2q\u0080\3\2\2\2r"+
+		"s\5\30\r\2st\7\31\2\2t\u0080\3\2\2\2uv\5\32\16\2vw\7\31\2\2w\u0080\3\2"+
+		"\2\2x\u0080\5\36\20\2y\u0080\5\"\22\2z\u0080\5$\23\2{\u0080\5&\24\2|\u0080"+
+		"\5(\25\2}~\7\b\2\2~\u0080\7\31\2\2\177n\3\2\2\2\177o\3\2\2\2\177r\3\2"+
+		"\2\2\177u\3\2\2\2\177x\3\2\2\2\177y\3\2\2\2\177z\3\2\2\2\177{\3\2\2\2"+
+		"\177|\3\2\2\2\177}\3\2\2\2\u0080\27\3\2\2\2\u0081\u0082\7/\2\2\u0082\u0083"+
+		"\7\33\2\2\u0083\u0084\5*\26\2\u0084\31\3\2\2\2\u0085\u0086\7/\2\2\u0086"+
+		"\u008c\5\34\17\2\u0087\u0088\7\3\2\2\u0088\u008c\5\34\17\2\u0089\u008a"+
+		"\7\4\2\2\u008a\u008c\5\34\17\2\u008b\u0085\3\2\2\2\u008b\u0087\3\2\2\2"+
+		"\u008b\u0089\3\2\2\2\u008c\33\3\2\2\2\u008d\u008f\7\25\2\2\u008e\u0090"+
+		"\5*\26\2\u008f\u008e\3\2\2\2\u008f\u0090\3\2\2\2\u0090\u0095\3\2\2\2\u0091"+
+		"\u0092\7\32\2\2\u0092\u0094\5*\26\2\u0093\u0091\3\2\2\2\u0094\u0097\3"+
+		"\2\2\2\u0095\u0093\3\2\2\2\u0095\u0096\3\2\2\2\u0096\u0098\3\2\2\2\u0097"+
+		"\u0095\3\2\2\2\u0098\u0099\7\26\2\2\u0099\35\3\2\2\2\u009a\u009b\7\t\2"+
+		"\2\u009b\u009c\5 \21\2\u009c\u009d\5\22\n\2\u009d\u009e\7\n\2\2\u009e"+
+		"\u009f\5\22\n\2\u009f\u00a5\3\2\2\2\u00a0\u00a1\7\t\2\2\u00a1\u00a2\5"+
+		" \21\2\u00a2\u00a3\5\22\n\2\u00a3\u00a5\3\2\2\2\u00a4\u009a\3\2\2\2\u00a4"+
+		"\u00a0\3\2\2\2\u00a5\37\3\2\2\2\u00a6\u00a7\7\25\2\2\u00a7\u00a8\5*\26"+
+		"\2\u00a8\u00a9\7\26\2\2\u00a9!\3\2\2\2\u00aa\u00ab\7\13\2\2\u00ab\u00ac"+
+		"\5 \21\2\u00ac\u00ad\5\22\n\2\u00ad#\3\2\2\2\u00ae\u00af\7\f\2\2\u00af"+
+		"\u00b0\5\22\n\2\u00b0\u00b1\7\13\2\2\u00b1\u00b2\5 \21\2\u00b2\u00b3\7"+
+		"\31\2\2\u00b3%\3\2\2\2\u00b4\u00b5\7\r\2\2\u00b5\u00b6\7\25\2\2\u00b6"+
+		"\u00b7\5\30\r\2\u00b7\u00b8\7\31\2\2\u00b8\u00b9\5*\26\2\u00b9\u00ba\7"+
+		"\31\2\2\u00ba\u00bb\5\30\r\2\u00bb\u00bc\7\26\2\2\u00bc\u00bd\5\22\n\2"+
+		"\u00bd\'\3\2\2\2\u00be\u00bf\7\16\2\2\u00bf\u00c0\5*\26\2\u00c0\u00c1"+
+		"\7\31\2\2\u00c1)\3\2\2\2\u00c2\u00c3\b\26\1\2\u00c3\u00c4\7\36\2\2\u00c4"+
+		"\u00d3\5*\26\2\u00c5\u00c6\7\25\2\2\u00c6\u00c7\5*\26\2\u00c7\u00c8\7"+
+		"\26\2\2\u00c8\u00d3\3\2\2\2\u00c9\u00d3\7*\2\2\u00ca\u00d3\7.\2\2\u00cb"+
+		"\u00d3\7+\2\2\u00cc\u00d3\7-\2\2\u00cd\u00d3\7,\2\2\u00ce\u00cf\7/\2\2"+
+		"\u00cf\u00d3\5\34\17\2\u00d0\u00d3\7/\2\2\u00d1\u00d3\7\17\2\2\u00d2\u00c2"+
+		"\3\2\2\2\u00d2\u00c5\3\2\2\2\u00d2\u00c9\3\2\2\2\u00d2\u00ca\3\2\2\2\u00d2"+
+		"\u00cb\3\2\2\2\u00d2\u00cc\3\2\2\2\u00d2\u00cd\3\2\2\2\u00d2\u00ce\3\2"+
+		"\2\2\u00d2\u00d0\3\2\2\2\u00d2\u00d1\3\2\2\2\u00d3\u00e8\3\2\2\2\u00d4"+
+		"\u00d5\6\26\2\3\u00d5\u00d6\t\3\2\2\u00d6\u00e7\5*\26\2\u00d7\u00d8\6"+
+		"\26\3\3\u00d8\u00d9\t\4\2\2\u00d9\u00e7\5*\26\2\u00da\u00db\6\26\4\3\u00db"+
+		"\u00dc\t\5\2\2\u00dc\u00e7\5*\26\2\u00dd\u00de\6\26\5\3\u00de\u00df\t"+
+		"\6\2\2\u00df\u00e7\5*\26\2\u00e0\u00e1\6\26\6\3\u00e1\u00e2\7#\2\2\u00e2"+
+		"\u00e7\5*\26\2\u00e3\u00e4\6\26\7\3\u00e4\u00e5\7$\2\2\u00e5\u00e7\5*"+
+		"\26\2\u00e6\u00d4\3\2\2\2\u00e6\u00d7\3\2\2\2\u00e6\u00da\3\2\2\2\u00e6"+
+		"\u00dd\3\2\2\2\u00e6\u00e0\3\2\2\2\u00e6\u00e3\3\2\2\2\u00e7\u00ea\3\2"+
+		"\2\2\u00e8\u00e6\3\2\2\2\u00e8\u00e9\3\2\2\2\u00e9+\3\2\2\2\u00ea\u00e8"+
+		"\3\2\2\2\20/\66NRXd\177\u008b\u008f\u0095\u00a4\u00d2\u00e6\u00e8";
 	public static final ATN _ATN =
 		ATNSimulator.deserialize(_serializedATN.toCharArray());
 	static {

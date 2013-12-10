@@ -32,7 +32,7 @@ public class FirstPass extends CodeCraftGrammarBaseListener{
     }
     
     public void exitProgram(@NotNull ProgramContext ctx) {
-    	System.out.println(globals);
+    	Main.displayScope(globals);
     	ta.setText(ta.getText() +"\n"+ globals);
     }
   
@@ -75,16 +75,14 @@ public class FirstPass extends CodeCraftGrammarBaseListener{
     }
     
     public void exitFunctionDeclaration(@NotNull FunctionDeclarationContext ctx) {
-    	System.out.println(currentScope);
-    	ta.setText(ta.getText() +"\n"+ currentScope);
+    	Main.displayScope(currentScope);
     	currentScope = currentScope.getEnclosingScope(); // pop scope
     	if(currentScope.getClass()==GlobalScope.class)
     		currentScope = (GlobalScope)currentScope;
     }
     
     public void exitMainFunction(@NotNull MainFunctionContext ctx) {
-    	System.out.println(currentScope);
-    	ta.setText(ta.getText() +"\n"+ currentScope);
+    	Main.displayScope(currentScope);
     	currentScope = currentScope.getEnclosingScope(); // pop scope
     	if(currentScope.getClass()==GlobalScope.class)
     		currentScope = (GlobalScope)currentScope;
@@ -98,8 +96,7 @@ public class FirstPass extends CodeCraftGrammarBaseListener{
     }
 
     public void exitBlock(CodeCraftGrammarParser.BlockContext ctx) {
-        System.out.println(currentScope);
-        ta.setText(ta.getText() +"\n"+ currentScope);
+    	Main.displayScope(currentScope);
         currentScope = currentScope.getEnclosingScope(); // pop scope
         if(currentScope.getClass()==FunctionSymbol.class)
         	currentScope = (FunctionSymbol)currentScope;
@@ -127,7 +124,7 @@ public class FirstPass extends CodeCraftGrammarBaseListener{
     
     public void exitConstantStatement(@NotNull ConstantStatementContext ctx) {
     	GlobalScope temp = (GlobalScope) currentScope;
-    	VariableDeclarationContext ctx2 = ctx.variableDeclaration();
+    	ConstantStatementContext ctx2 = ctx;
     	
     	String name = ctx2.ID().getText();
     	if(temp.symbols.containsKey(name)){

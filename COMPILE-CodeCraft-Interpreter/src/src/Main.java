@@ -38,51 +38,40 @@ public class Main {
     }
 
     public static void error(Token t, String msg) {
-        System.out.printf("line %d:%d %s\n", t.getLine(), t.getCharPositionInLine(),
+     
+    	System.out.printf("line %d:%d %s\n", t.getLine(), t.getCharPositionInLine(),
                           msg);
+        
         ta.setText(ta.getText() +"\n"+ "line "+  t.getLine() +":"+ t.getCharPositionInLine() + msg + "\n");
     }
-	/*
-	public static void main(String[] args) throws IOException{
-		
-		String inputFile = "src/sample_code.cc";
-        if ( args.length>0 ) inputFile = args[0];
-        InputStream is = System.in;
-        if ( inputFile!=null ) {
-            is = new FileInputStream(inputFile);
-        }
+    public static void syntaxError(Token t, String msg) {
         
-        ANTLRInputStream input = new ANTLRInputStream(is);
-		CodeCraftGrammarLexer lexer = new CodeCraftGrammarLexer(input);
-		CodeCraftGrammarParser parser = new CodeCraftGrammarParser(new CommonTokenStream(lexer));
-        parser.setBuildParseTree(true);
+    	System.out.printf("line %d:%d %s\n", t.getLine(), t.getCharPositionInLine(),
+                          msg);
         
-        ParseTree tree = parser.program();
+        ta.setText(ta.getText() +"\n"+ "line "+  t.getLine() +":"+ t.getCharPositionInLine() + msg + "\n");
+    }
+   
+    public static void semanticError(Token t, String msg){
+
+    	System.out.printf("line %d:%d %s\n", t.getLine(), t.getCharPositionInLine(),
+                          msg);
         
-        ParseTreeWalker walker = new ParseTreeWalker();
-        
-        FirstPass def = new FirstPass();
-        walker.walk(def, tree);
-        // create next phase and feed symbol table info from def to ref phase
-        SecondPass ref = new SecondPass(def.globals, def.scopes);
-        walker.walk(ref, tree);
-        EvalVisitor interpreter = new EvalVisitor(def.globals,def.scopes);
-        interpreter.visit(tree);
-        
-		
-        //EvalVisitor visitor = new EvalVisitor();
-        //visitor.visit(tree);
-	}*/
+        ta.setText(ta.getText() +"\n"+ "line "+  t.getLine() +":"+ t.getCharPositionInLine() + msg + "\n");
+    }
+    
+    public static void displayScope(Scope s){
+    	System.out.println(s);
+    }
     
 	public Main(String code, String[] args,JTextArea ta)throws Exception {
 		this.ta =ta;
 		String inputFile = "src/sample_code.cc";
-        if ( args!=null ) inputFile = args[0];
         InputStream is = System.in;
         if ( inputFile!=null ) {
             is = new FileInputStream(inputFile);
         }
-        is = new StringBufferInputStream(code);
+        //is = new StringBufferInputStream(code);
         ANTLRInputStream input = new ANTLRInputStream(is);
 		CodeCraftGrammarLexer lexer = new CodeCraftGrammarLexer(input);
 		CodeCraftGrammarParser parser = new CodeCraftGrammarParser(new CommonTokenStream(lexer));
@@ -100,13 +89,5 @@ public class Main {
         // create next phase and feed symbol table info from def to ref phase
         SecondPass ref = new SecondPass(def.globals, def.scopes,ta);
         walker.walk(ref, tree);
-        
-        
-        //EvalVisitor interpreter = new EvalVisitor(def.globals,def.scopes);
-        //interpreter.visit(tree);
-        
-		
-        //EvalVisitor visitor = new EvalVisitor();
-        //visitor.visit(tree);
 	}
 }

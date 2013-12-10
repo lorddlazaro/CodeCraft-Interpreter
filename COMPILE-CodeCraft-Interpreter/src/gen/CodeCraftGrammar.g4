@@ -14,7 +14,7 @@ program
     :  constantStatement* mainFunction functionDeclaration* EOF 
     ;
 constantStatement 
-    : ABSOLUTE variableDeclaration ASSIGN expression SEMI     
+    : ABSOLUTE dataType ID ASSIGN expression SEMI     
     ;
 variableDeclaration 
     : dataType ID 
@@ -74,7 +74,7 @@ ifStatement
     | WETHER condition block #ifonly
     ;
 condition
-    : LPAREN booleanExpression RPAREN  
+    : LPAREN expression RPAREN  
     ;
 whileStatement
     : UNTIL condition block
@@ -83,65 +83,28 @@ doWhileStatement
     : EXECUTE block UNTIL condition SEMI
     ;
 forStatement
-    : AS LPAREN assignmentStatement SEMI booleanExpression SEMI assignmentStatement RPAREN block
+    : AS LPAREN assignmentStatement SEMI expression SEMI assignmentStatement RPAREN block
     ;
 returnStatement
     : REPLY expression SEMI
     ;
 expression
-    : StringLiteral #stringExpr
-    | CharacterLiteral  #charExpr
-    | numExpression #numExpr
-    | booleanExpression #boolExpr
-    | functionCallStatement #funcCallExpr
+    : '!' expression #bangExpr
+    | '(' expression ')'  #parensExpr
+    | expression ('*'|'/'|'%') expression #multdivmodExpr
+    | expression ('+'|'-') expression   #addminusExpr
+    | expression ('>='|'<='|'<'|'>') expression  #relationalExpr
+    | expression ('=='|'!=') expression               #equalityExpr
+    | expression '&&' expression               #andExpr
+    | expression '||' expression                #orExpr
+    | IntegerLiteral #intExpr
+    | BooleanLiteral #boolExpr
+    | FloatingPointLiteral #floatExpr
+    | StringLiteral #stringExpr
+    | CharacterLiteral #charExpr
+    | ID actualParameters #funcCallExpr
     | ID         #idExpr
     | NULL  #nullExpr
-    ;
-numExpression
-    : numTerm   #term
-    | numTerm ADD numExpression #add
-    | numTerm SUB numExpression #sub
-    ;
-numTerm
-    : numFactor #factor
-    | numFactor MUL numTerm #mul
-    | numFactor DIV numTerm #div
-    | numFactor MOD numTerm #mod
-    ;
-numFactor
-    : LPAREN numExpression RPAREN   #parens
-    | IntegerLiteral    #factorInt
-    | FloatingPointLiteral    #factorFloat
-    | functionCallStatement #funcNumExpr
-    | ID  #numVar
-    ;
-booleanExpression
-    : numExpression relationalOperator numExpression    #relational
-    | booleanLogical EQUAL booleanExpression    #equal
-    | booleanLogical NOTEQUAL booleanExpression #notequal
-    | booleanLogical    #logical
-    ;
-relationalOperator
-    : EQUAL #opEqual
-    | NOTEQUAL  #opNotequal
-    | GE    #opGreaterequal
-    | LE    #opLessequal
-    | GT    #opGreater
-    | LT    #opLess
-    ;
-booleanLogical
-    : booleanTerm OR booleanLogical #or
-    | booleanTerm   #boolTerm
-    ;
-booleanTerm
-    : booleanFactor AND booleanTerm #and
-    | booleanFactor #boolFactor
-    ;
-booleanFactor
-    : LPAREN booleanExpression RPAREN #boolParen
-    | BANG booleanExpression    #bang
-    | BooleanLiteral    #bool
-    | ID  #boolVar
     ;
 //LEXICAL RULES
 // Keywords
@@ -242,7 +205,6 @@ BooleanLiteral
     : 'true'
     | 'false'
     ;
-
 ID
     :   Letter LetterOrDigit*
     ;
@@ -272,11 +234,9 @@ LetterOrDigit
 //
 WS  :  [ \t\r\n\u000C]+ -> skip
     ;
-
 COMMENT
     :   '/*' .*? '*/' -> skip
     ;
-
 LINE_COMMENT
     :   '//' ~[\r\n]* -> skip
     ;

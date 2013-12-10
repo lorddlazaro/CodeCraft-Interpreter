@@ -11,14 +11,19 @@ darkness mine(int x){
 	char x;
 	string y;
 	boolean z;
-	a=2;
+	//a=2;
 	//Statement Declaration
-	
+	 
 	println("char x: ",x);
 	
 	//assignment statements
-	v = 1;
-	w = 2.5;
+	v = 1 * 5;
+	w = 1;
+	w = w;
+	w = 2.5 / 2;
+	w = 2 + 1;
+	w = 3 - 4;
+	w = 2%5;
 	x = 'x';
 	y = "hello";
 	z = true;
@@ -47,7 +52,7 @@ darkness mine(int x){
 	
 	v = 5;
 	until(v>0){
-		v = v-1;
+		v = 5-1;
 	}
 
 	//do while statement

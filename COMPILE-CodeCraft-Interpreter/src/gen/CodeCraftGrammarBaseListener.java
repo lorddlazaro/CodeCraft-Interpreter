@@ -71,6 +71,32 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
+	@Override public void enterFloatExpr(@NotNull CodeCraftGrammarParser.FloatExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitFloatExpr(@NotNull CodeCraftGrammarParser.FloatExprContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterBangExpr(@NotNull CodeCraftGrammarParser.BangExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitBangExpr(@NotNull CodeCraftGrammarParser.BangExprContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
 	@Override public void enterVariableDeclaration(@NotNull CodeCraftGrammarParser.VariableDeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -84,19 +110,6 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterBoolTerm(@NotNull CodeCraftGrammarParser.BoolTermContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitBoolTerm(@NotNull CodeCraftGrammarParser.BoolTermContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
 	@Override public void enterFuncCallID(@NotNull CodeCraftGrammarParser.FuncCallIDContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -104,32 +117,6 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitFuncCallID(@NotNull CodeCraftGrammarParser.FuncCallIDContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterBoolFactor(@NotNull CodeCraftGrammarParser.BoolFactorContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitBoolFactor(@NotNull CodeCraftGrammarParser.BoolFactorContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterOpLess(@NotNull CodeCraftGrammarParser.OpLessContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitOpLess(@NotNull CodeCraftGrammarParser.OpLessContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -162,26 +149,13 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterBang(@NotNull CodeCraftGrammarParser.BangContext ctx) { }
+	@Override public void enterEqualityExpr(@NotNull CodeCraftGrammarParser.EqualityExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitBang(@NotNull CodeCraftGrammarParser.BangContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterNumVar(@NotNull CodeCraftGrammarParser.NumVarContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitNumVar(@NotNull CodeCraftGrammarParser.NumVarContext ctx) { }
+	@Override public void exitEqualityExpr(@NotNull CodeCraftGrammarParser.EqualityExprContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -240,58 +214,6 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterOr(@NotNull CodeCraftGrammarParser.OrContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitOr(@NotNull CodeCraftGrammarParser.OrContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterMod(@NotNull CodeCraftGrammarParser.ModContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitMod(@NotNull CodeCraftGrammarParser.ModContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterBoolVar(@NotNull CodeCraftGrammarParser.BoolVarContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitBoolVar(@NotNull CodeCraftGrammarParser.BoolVarContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterParens(@NotNull CodeCraftGrammarParser.ParensContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitParens(@NotNull CodeCraftGrammarParser.ParensContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
 	@Override public void enterMainFunction(@NotNull CodeCraftGrammarParser.MainFunctionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -318,65 +240,39 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterAnd(@NotNull CodeCraftGrammarParser.AndContext ctx) { }
+	@Override public void enterMultdivmodExpr(@NotNull CodeCraftGrammarParser.MultdivmodExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitAnd(@NotNull CodeCraftGrammarParser.AndContext ctx) { }
+	@Override public void exitMultdivmodExpr(@NotNull CodeCraftGrammarParser.MultdivmodExprContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterOpNotequal(@NotNull CodeCraftGrammarParser.OpNotequalContext ctx) { }
+	@Override public void enterOrExpr(@NotNull CodeCraftGrammarParser.OrExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitOpNotequal(@NotNull CodeCraftGrammarParser.OpNotequalContext ctx) { }
+	@Override public void exitOrExpr(@NotNull CodeCraftGrammarParser.OrExprContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterOpGreater(@NotNull CodeCraftGrammarParser.OpGreaterContext ctx) { }
+	@Override public void enterAddminusExpr(@NotNull CodeCraftGrammarParser.AddminusExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitOpGreater(@NotNull CodeCraftGrammarParser.OpGreaterContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterLogical(@NotNull CodeCraftGrammarParser.LogicalContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitLogical(@NotNull CodeCraftGrammarParser.LogicalContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterFactorInt(@NotNull CodeCraftGrammarParser.FactorIntContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitFactorInt(@NotNull CodeCraftGrammarParser.FactorIntContext ctx) { }
+	@Override public void exitAddminusExpr(@NotNull CodeCraftGrammarParser.AddminusExprContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -422,13 +318,13 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterOpLessequal(@NotNull CodeCraftGrammarParser.OpLessequalContext ctx) { }
+	@Override public void enterParensExpr(@NotNull CodeCraftGrammarParser.ParensExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitOpLessequal(@NotNull CodeCraftGrammarParser.OpLessequalContext ctx) { }
+	@Override public void exitParensExpr(@NotNull CodeCraftGrammarParser.ParensExprContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -448,13 +344,13 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterSub(@NotNull CodeCraftGrammarParser.SubContext ctx) { }
+	@Override public void enterAndExpr(@NotNull CodeCraftGrammarParser.AndExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitSub(@NotNull CodeCraftGrammarParser.SubContext ctx) { }
+	@Override public void exitAndExpr(@NotNull CodeCraftGrammarParser.AndExprContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -500,19 +396,6 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterDiv(@NotNull CodeCraftGrammarParser.DivContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitDiv(@NotNull CodeCraftGrammarParser.DivContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
 	@Override public void enterBlock(@NotNull CodeCraftGrammarParser.BlockContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -533,19 +416,6 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitNullExpr(@NotNull CodeCraftGrammarParser.NullExprContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterFactorFloat(@NotNull CodeCraftGrammarParser.FactorFloatContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitFactorFloat(@NotNull CodeCraftGrammarParser.FactorFloatContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -578,32 +448,6 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterAdd(@NotNull CodeCraftGrammarParser.AddContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitAdd(@NotNull CodeCraftGrammarParser.AddContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterOpEqual(@NotNull CodeCraftGrammarParser.OpEqualContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitOpEqual(@NotNull CodeCraftGrammarParser.OpEqualContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
 	@Override public void enterWhile(@NotNull CodeCraftGrammarParser.WhileContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -630,19 +474,6 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterNumExpr(@NotNull CodeCraftGrammarParser.NumExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitNumExpr(@NotNull CodeCraftGrammarParser.NumExprContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
 	@Override public void enterIf(@NotNull CodeCraftGrammarParser.IfContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -650,19 +481,6 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitIf(@NotNull CodeCraftGrammarParser.IfContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterNotequal(@NotNull CodeCraftGrammarParser.NotequalContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitNotequal(@NotNull CodeCraftGrammarParser.NotequalContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -708,19 +526,6 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterBoolParen(@NotNull CodeCraftGrammarParser.BoolParenContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitBoolParen(@NotNull CodeCraftGrammarParser.BoolParenContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
 	@Override public void enterReturnDarkness(@NotNull CodeCraftGrammarParser.ReturnDarknessContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -747,19 +552,6 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterEqual(@NotNull CodeCraftGrammarParser.EqualContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitEqual(@NotNull CodeCraftGrammarParser.EqualContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
 	@Override public void enterVarDec(@NotNull CodeCraftGrammarParser.VarDecContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -767,32 +559,6 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitVarDec(@NotNull CodeCraftGrammarParser.VarDecContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterFactor(@NotNull CodeCraftGrammarParser.FactorContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitFactor(@NotNull CodeCraftGrammarParser.FactorContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterMul(@NotNull CodeCraftGrammarParser.MulContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitMul(@NotNull CodeCraftGrammarParser.MulContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -825,26 +591,13 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterFuncNumExpr(@NotNull CodeCraftGrammarParser.FuncNumExprContext ctx) { }
+	@Override public void enterIntExpr(@NotNull CodeCraftGrammarParser.IntExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitFuncNumExpr(@NotNull CodeCraftGrammarParser.FuncNumExprContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterOpGreaterequal(@NotNull CodeCraftGrammarParser.OpGreaterequalContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitOpGreaterequal(@NotNull CodeCraftGrammarParser.OpGreaterequalContext ctx) { }
+	@Override public void exitIntExpr(@NotNull CodeCraftGrammarParser.IntExprContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -877,39 +630,13 @@ public class CodeCraftGrammarBaseListener implements CodeCraftGrammarListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterTerm(@NotNull CodeCraftGrammarParser.TermContext ctx) { }
+	@Override public void enterRelationalExpr(@NotNull CodeCraftGrammarParser.RelationalExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitTerm(@NotNull CodeCraftGrammarParser.TermContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterRelational(@NotNull CodeCraftGrammarParser.RelationalContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitRelational(@NotNull CodeCraftGrammarParser.RelationalContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterBool(@NotNull CodeCraftGrammarParser.BoolContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitBool(@NotNull CodeCraftGrammarParser.BoolContext ctx) { }
+	@Override public void exitRelationalExpr(@NotNull CodeCraftGrammarParser.RelationalExprContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
