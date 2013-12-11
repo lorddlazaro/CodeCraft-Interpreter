@@ -295,6 +295,7 @@ public class EvalVisitor extends CodeCraftGrammarBaseVisitor<Symbol>{
     @Override
     public Symbol visitFuncCallPrintln(FuncCallPrintlnContext ctx) {
     	// TODO Auto-generated method stub
+    	System.out.println(ctx.toString());
     	return super.visitFuncCallPrintln(ctx);
     }
     @Override

@@ -39,14 +39,16 @@ public class Main {
     }
 
     public static void error(Token t, String msg) {
-     
+    	System.out.println("Error Found. Program will not state what kind of error, we just want you to know you " +
+    						"made a bad mistake and now we're printing it on your screen");
     	System.out.printf("line %d:%d %s\n", t.getLine(), t.getCharPositionInLine(),
                           msg);
         
         ta.setText(ta.getText() +"\n"+ "line "+  t.getLine() +":"+ t.getCharPositionInLine() + msg + "\n");
     }
     public static void syntaxError(Token t, String msg) {
-        
+        System.out.println("Syntax Error Encountered. Thou shout at yourself for your mistake and thou make sudden libre to friends" +
+        					" but please do look for the error contained with the corresponding line number and thou fix your wrongs");
     	System.out.printf("line %d:%d %s\n", t.getLine(), t.getCharPositionInLine(),
                           msg);
         
@@ -54,7 +56,8 @@ public class Main {
     }
    
     public static void semanticError(Token t, String msg){
-
+    	System.out.println("Semantic Error. Thou feel thy wrath. Semantic error's definition can be found in dictionary but you " +
+    						"should probably know that because you are here making a code");
     	System.out.printf("line %d:%d %s\n", t.getLine(), t.getCharPositionInLine(),
                           msg);
         
@@ -68,7 +71,7 @@ public class Main {
     	System.out.print(msg);
     }
     public static void debug(String msg){
-    	System.out.println(">:"+msg);
+    	//System.out.println(">:"+msg);
     }
     
 	public Main(String code, String[] args,JTextArea ta)throws Exception {
