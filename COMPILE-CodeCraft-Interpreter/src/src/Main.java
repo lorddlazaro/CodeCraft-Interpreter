@@ -11,6 +11,7 @@ import java.util.List;
 
 import javax.swing.JTextArea;
 
+
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Token;
@@ -66,8 +67,8 @@ public class Main {
     
 	public Main(String code, String[] args,JTextArea ta)throws Exception {
 		this.ta =ta;
-		String inputFile = "src/sample_code.cc";
-        InputStream is = System.in;
+		String inputFile = "src/sample_code2.cc";
+        InputStream is=null;
         if ( inputFile!=null ) {
             is = new FileInputStream(inputFile);
         }
@@ -80,14 +81,19 @@ public class Main {
         ParseTree tree = parser.program();
         List<String> ruleNames = Arrays.asList(parser.getRuleNames());
         TreeViewer tv = new TreeViewer(ruleNames, tree);
-        //tv.
         
+        
+
+        EvalVisitor visitor = new EvalVisitor();
+        visitor.visit(tree);
+        /*
         ParseTreeWalker walker = new ParseTreeWalker();
         
-        FirstPass def = new FirstPass(ta);
+        FirstPass def = new FirstPass();
         walker.walk(def, tree);
-        // create next phase and feed symbol table info from def to ref phase
-        SecondPass ref = new SecondPass(def.globals, def.scopes,ta);
+        // create next phase and feed symbol table info from define to reference phase
+        SecondPass ref = new SecondPass(def.globals, def.scopes);
         walker.walk(ref, tree);
+        */
 	}
 }

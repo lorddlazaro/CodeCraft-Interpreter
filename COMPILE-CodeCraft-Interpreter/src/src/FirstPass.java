@@ -20,12 +20,8 @@ public class FirstPass extends CodeCraftGrammarBaseListener{
 	ParseTreeProperty<Scope> scopes = new ParseTreeProperty<Scope>();
     GlobalScope globals;
     Scope currentScope; // define symbols in this scope
-    JTextArea ta;
     void saveScope(ParserRuleContext ctx, Scope s) { scopes.put(ctx, s); }
     
-    public FirstPass(JTextArea ta){
-    	this.ta =ta;
-    }
     public void enterProgram(@NotNull ProgramContext ctx) {
     	globals = new GlobalScope(null);
     	currentScope = globals;
@@ -33,7 +29,6 @@ public class FirstPass extends CodeCraftGrammarBaseListener{
     
     public void exitProgram(@NotNull ProgramContext ctx) {
     	Main.displayScope(globals);
-    	ta.setText(ta.getText() +"\n"+ globals);
     }
   
     public void enterFunctionDeclaration(@NotNull FunctionDeclarationContext ctx) {

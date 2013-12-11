@@ -41,11 +41,11 @@ public class SecondPass extends CodeCraftGrammarBaseListener{
     Scope currentScope; // resolve symbols starting in this scope
     JTextArea ta;
     Stack<Symbol> stack = new Stack<Symbol>();
+    Symbol op1,op2,ans;
     
-    public SecondPass(GlobalScope globals, ParseTreeProperty<Scope> scopes,JTextArea ta) {
+    public SecondPass(GlobalScope globals, ParseTreeProperty<Scope> scopes) {
         this.scopes = scopes;
         this.globals = globals;
-        this.ta=ta;
     }
     public void enterProgram(@NotNull ProgramContext ctx) {
     	currentScope = globals;
@@ -86,8 +86,6 @@ public class SecondPass extends CodeCraftGrammarBaseListener{
         if ( var instanceof FunctionSymbol ) {
         	Main.error(ctx.ID().getSymbol(), name+" is not a variable");
         }
-        System.out.println(name);
-        ta.setText(ta.getText() +"\n"+ name);
         
         Symbol x = stack.pop();
         System.out.println("==\n::assign value"+x.value + " assign type:" + x.type.toString());
@@ -100,7 +98,6 @@ public class SecondPass extends CodeCraftGrammarBaseListener{
         	currentScope.resolve(name).value = x.asFloat();
         	System.out.println("assignment name:"+name +" value: "+currentScope.resolve(name).value+" type:"+currentScope.resolve(name).type+"===\n");
         }else{
-        	//TODO: error type mismatch
         }
     }
     public void exitFuncCallExpr(@NotNull FuncCallExprContext ctx) {
@@ -117,7 +114,7 @@ public class SecondPass extends CodeCraftGrammarBaseListener{
     public void exitBangExpr(@NotNull BangExprContext ctx) {
     	Symbol op1 = stack.pop();
     	Symbol ans=null;
-    	String operator = ctx.getChild(1).getText();
+    	String operator = ctx.getChild(0).getText();
     	if(op1.isBoolean()){
 			if (operator.equals("!")){
 				ans = new Symbol(Type.tBOOLEAN, !op1.asBoolean());

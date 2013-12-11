@@ -94,6 +94,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitProgram(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitProgram(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ProgramContext program() throws RecognitionException {
@@ -167,6 +172,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitConstantStatement(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitConstantStatement(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ConstantStatementContext constantStatement() throws RecognitionException {
@@ -211,6 +221,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitVariableDeclaration(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitVariableDeclaration(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final VariableDeclarationContext variableDeclaration() throws RecognitionException {
@@ -251,6 +266,11 @@ public class CodeCraftGrammarParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitDataType(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitDataType(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -303,6 +323,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitFunctionDeclaration(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitFunctionDeclaration(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final FunctionDeclarationContext functionDeclaration() throws RecognitionException {
@@ -350,6 +375,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitReturnDarkness(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitReturnDarkness(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class ReturnDataTypeContext extends ReturnTypeContext {
 		public DataTypeContext dataType() {
@@ -363,6 +393,11 @@ public class CodeCraftGrammarParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitReturnDataType(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitReturnDataType(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -430,6 +465,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitParameterList(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitParameterList(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ParameterListContext parameterList() throws RecognitionException {
@@ -493,6 +533,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitParameter(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitParameter(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ParameterContext parameter() throws RecognitionException {
@@ -536,6 +581,11 @@ public class CodeCraftGrammarParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitBlock(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitBlock(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -595,6 +645,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitMainFunction(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitMainFunction(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final MainFunctionContext mainFunction() throws RecognitionException {
@@ -645,6 +700,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitAssign(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitAssign(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class ChokeContext extends StatementContext {
 		public TerminalNode CHOKE() { return getToken(CodeCraftGrammarParser.CHOKE, 0); }
@@ -657,6 +717,11 @@ public class CodeCraftGrammarParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitChoke(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitChoke(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class ForContext extends StatementContext {
@@ -672,6 +737,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitFor(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitFor(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class IfContext extends StatementContext {
 		public IfStatementContext ifStatement() {
@@ -685,6 +755,11 @@ public class CodeCraftGrammarParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitIf(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitIf(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class ReturnContext extends StatementContext {
@@ -700,6 +775,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitReturn(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitReturn(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class BlockStatementContext extends StatementContext {
 		public BlockContext block() {
@@ -713,6 +793,11 @@ public class CodeCraftGrammarParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitBlockStatement(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitBlockStatement(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class VarDecContext extends StatementContext {
@@ -729,6 +814,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitVarDec(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitVarDec(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class FuncCallContext extends StatementContext {
 		public FunctionCallStatementContext functionCallStatement() {
@@ -744,6 +834,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitFuncCall(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitFuncCall(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class DowhileContext extends StatementContext {
 		public DoWhileStatementContext doWhileStatement() {
@@ -758,6 +853,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitDowhile(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitDowhile(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class WhileContext extends StatementContext {
 		public WhileStatementContext whileStatement() {
@@ -771,6 +871,11 @@ public class CodeCraftGrammarParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitWhile(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitWhile(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -894,6 +999,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitAssignmentStatement(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitAssignmentStatement(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final AssignmentStatementContext assignmentStatement() throws RecognitionException {
@@ -943,6 +1053,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitFuncCallID(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitFuncCallID(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class FuncCallPrintlnContext extends FunctionCallStatementContext {
 		public ActualParametersContext actualParameters() {
@@ -958,6 +1073,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitFuncCallPrintln(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitFuncCallPrintln(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class FuncCallPrintContext extends FunctionCallStatementContext {
 		public TerminalNode PRINT() { return getToken(CodeCraftGrammarParser.PRINT, 0); }
@@ -972,6 +1092,11 @@ public class CodeCraftGrammarParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitFuncCallPrint(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitFuncCallPrint(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1044,6 +1169,11 @@ public class CodeCraftGrammarParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitActualParameters(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitActualParameters(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1119,6 +1249,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitIfonly(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitIfonly(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class IfelseContext extends IfStatementContext {
 		public ConditionContext condition() {
@@ -1140,6 +1275,11 @@ public class CodeCraftGrammarParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitIfelse(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitIfelse(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1201,6 +1341,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitCondition(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitCondition(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ConditionContext condition() throws RecognitionException {
@@ -1244,6 +1389,11 @@ public class CodeCraftGrammarParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitWhileStatement(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitWhileStatement(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1290,6 +1440,11 @@ public class CodeCraftGrammarParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitDoWhileStatement(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitDoWhileStatement(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1349,6 +1504,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitForStatement(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitForStatement(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ForStatementContext forStatement() throws RecognitionException {
@@ -1396,6 +1556,11 @@ public class CodeCraftGrammarParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitReturnStatement(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitReturnStatement(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1452,6 +1617,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitAndExpr(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitAndExpr(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class StringExprContext extends ExpressionContext {
 		public TerminalNode StringLiteral() { return getToken(CodeCraftGrammarParser.StringLiteral, 0); }
@@ -1463,6 +1633,11 @@ public class CodeCraftGrammarParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitStringExpr(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitStringExpr(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class FuncCallExprContext extends ExpressionContext {
@@ -1479,6 +1654,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitFuncCallExpr(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitFuncCallExpr(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class IdExprContext extends ExpressionContext {
 		public TerminalNode ID() { return getToken(CodeCraftGrammarParser.ID, 0); }
@@ -1490,6 +1670,11 @@ public class CodeCraftGrammarParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitIdExpr(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitIdExpr(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class NullExprContext extends ExpressionContext {
@@ -1503,6 +1688,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitNullExpr(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitNullExpr(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class FloatExprContext extends ExpressionContext {
 		public TerminalNode FloatingPointLiteral() { return getToken(CodeCraftGrammarParser.FloatingPointLiteral, 0); }
@@ -1515,6 +1705,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitFloatExpr(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitFloatExpr(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class BoolExprContext extends ExpressionContext {
 		public TerminalNode BooleanLiteral() { return getToken(CodeCraftGrammarParser.BooleanLiteral, 0); }
@@ -1526,6 +1721,11 @@ public class CodeCraftGrammarParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitBoolExpr(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitBoolExpr(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class BangExprContext extends ExpressionContext {
@@ -1540,6 +1740,11 @@ public class CodeCraftGrammarParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitBangExpr(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitBangExpr(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class MultdivmodExprContext extends ExpressionContext {
@@ -1558,6 +1763,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitMultdivmodExpr(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitMultdivmodExpr(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class OrExprContext extends ExpressionContext {
 		public ExpressionContext expression(int i) {
@@ -1574,6 +1784,11 @@ public class CodeCraftGrammarParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitOrExpr(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitOrExpr(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class AddminusExprContext extends ExpressionContext {
@@ -1592,6 +1807,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitAddminusExpr(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitAddminusExpr(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class IntExprContext extends ExpressionContext {
 		public TerminalNode IntegerLiteral() { return getToken(CodeCraftGrammarParser.IntegerLiteral, 0); }
@@ -1603,6 +1823,11 @@ public class CodeCraftGrammarParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitIntExpr(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitIntExpr(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class ParensExprContext extends ExpressionContext {
@@ -1617,6 +1842,11 @@ public class CodeCraftGrammarParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitParensExpr(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitParensExpr(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class RelationalExprContext extends ExpressionContext {
@@ -1635,6 +1865,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitRelationalExpr(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitRelationalExpr(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class EqualityExprContext extends ExpressionContext {
 		public ExpressionContext expression(int i) {
@@ -1652,6 +1887,11 @@ public class CodeCraftGrammarParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitEqualityExpr(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitEqualityExpr(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class CharExprContext extends ExpressionContext {
 		public TerminalNode CharacterLiteral() { return getToken(CodeCraftGrammarParser.CharacterLiteral, 0); }
@@ -1663,6 +1903,11 @@ public class CodeCraftGrammarParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CodeCraftGrammarListener ) ((CodeCraftGrammarListener)listener).exitCharExpr(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CodeCraftGrammarVisitor ) return ((CodeCraftGrammarVisitor<? extends T>)visitor).visitCharExpr(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 

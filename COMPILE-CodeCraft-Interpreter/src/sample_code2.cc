@@ -4,7 +4,7 @@ absolute string SAMPLE_CONSTANT = 123;
 
 //Main Function
 
-darkness mine(int x){
+darkness mine(int xv){
 
 	int a;
 	int b;
