@@ -23,7 +23,16 @@ public class FunctionSymbol extends Symbol implements Scope {
         this.enclosingScope = enclosingScope;
         this.ctx = ctx;
     }
-
+    
+    /*
+     *	Sorry gusto ko talaga itry =))) 
+     */
+    public FunctionSymbol (String name, Type retType, Scope enclosingScope)
+    {
+    	super(name, retType);
+    	this.enclosingScope = enclosingScope;
+    }
+    
     public Symbol resolve(String name) {
         Symbol s = arguments.get(name);
         if ( s!=null ) return s;

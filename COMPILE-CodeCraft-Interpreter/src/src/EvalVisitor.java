@@ -284,7 +284,7 @@ public class EvalVisitor extends CodeCraftGrammarBaseVisitor<Symbol>{
     public Symbol visitFuncCallID(FuncCallIDContext ctx) {
     	//WHAT
     	//this.visitFunctionDeclaration();
-    	FunctionSymbol s = (FunctionSymbol)scopes.
+    	FunctionSymbol s = (FunctionSymbol)scopes.get(ctx);
     	return s;
     }
     @Override
