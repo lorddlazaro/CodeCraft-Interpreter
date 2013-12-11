@@ -14,61 +14,68 @@ darkness mine(int x){
 	//a=2;
 	//Statement Declaration
 	 
-	println("char x: ",x);
+	//println("char x: ",x);
 	
 	//assignment statements
-	v = 1 * 5;
-	w = 1;
-	w = w;
-	w = 2.5 / 2;
-	w = 2 + 1;
-	w = 3 - 4;
-	w = 2%5;
-	x = 'x';
+	v = 1 * 5; // 5
+	w = 1; 		// 1.0
+	w = w;		// 1.0
+	w = 2.5 / 2;	 //1.25
+	w = 2 + 1;		//3.0
+	w = 3 - 4;	//-1.0
+	w = 2%5;	//2.0
+	x = 'x';	
 	y = "hello";
 	z = true;
-
-	//function call statement
-	w = computeSomething(v,w);
-	doSomething();
-
-
-	//if statement
-	wether(z == true){
-		doSomething();
 	
+	z = 10>9;
+	z = 10>=10;
+	wether(z==true){
+		int testing; //local test 
+		v = 10;
+	}
+	z = v==10;
+	wether(z){
+		v =0;
 	}otherwise{
-
-		//nested if statement
-		wether(v > 0){
-			doSomething();
+		v=2;
+	}
+	
+	until(v<10){
+		v= v+1;
+	}
+	
+	v=0;
+	execute{
+		v=v+1;
+	}until(v<10);
+	
+	//for statement
+	w=0;
+	
+	as(v=0; v<10 ; v=v+1) {
+		w=w+1;
+	}
+	
+	z = true;
+	wether(z==true){
+		v=10;
+		wether(v==10){
+			v =0;
+			until(v<10){
+				v= v+1;
+				int test;
+				w=0;
+				as(test=0; test<10 ; test=test+1) {
+					w=w+1;
+				}
+			}
 		}otherwise{
-			doSomething();
+			v=2;
 		}
 	}
-
 	
-	//while statement
 	
-	v = 5;
-	until(v>0){
-		v = 5-1;
-	}
-
-	//do while statement
-	execute{
-		v = v+1;
-	}until(v == 5);
-
-	//for statement
-
-	as(v=5; v>0 ; v=v-1) {
-		doSomething();
-	}
-
-	//Expressions
-	//num expression
-
 	v = ((5 + 3)/4)-2;
 	w = NULL;
 	w = v / 2 % 5;
@@ -83,20 +90,20 @@ darkness mine(int x){
 	z = !z;
 	z = !true;
 	z = !(false || z);
+	
+	//w = computeSomething(1,2.5);
+	//doSomething();
 
 }
 
 //Function Declaration
 
 float computeSomething(int x, float w){
-	doSomething();
-	{
-		y = 5;
-	}
+	//doSomething();
 	reply x+w;
 }
 
 darkness doSomething(){
 	// Do nothing
-	doSomething();
+	//doSomething();
 }

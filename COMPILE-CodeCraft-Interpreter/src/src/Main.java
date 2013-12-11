@@ -68,7 +68,7 @@ public class Main {
     	System.out.print(msg);
     }
     public static void debug(String msg){
-    	System.out.println(">TRACE:"+msg);
+    	System.out.println(">:"+msg);
     }
     
 	public Main(String code, String[] args,JTextArea ta)throws Exception {
