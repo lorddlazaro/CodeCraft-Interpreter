@@ -64,10 +64,16 @@ public class Main {
     public static void displayScope(Scope s){
     	System.out.println(s);
     }
+    public static void printMsg(String msg){
+    	System.out.print(msg);
+    }
+    public static void debug(String msg){
+    	System.out.println(">TRACE:"+msg);
+    }
     
 	public Main(String code, String[] args,JTextArea ta)throws Exception {
 		this.ta =ta;
-		String inputFile = "src/sample_code2.cc";
+		String inputFile = "src/sample_code.cc";
         InputStream is=null;
         if ( inputFile!=null ) {
             is = new FileInputStream(inputFile);
@@ -82,18 +88,10 @@ public class Main {
         List<String> ruleNames = Arrays.asList(parser.getRuleNames());
         TreeViewer tv = new TreeViewer(ruleNames, tree);
         
-        
-
-        EvalVisitor visitor = new EvalVisitor();
+        DefinePhase visitor = new DefinePhase();
         visitor.visit(tree);
-        /*
-        ParseTreeWalker walker = new ParseTreeWalker();
+        ReferencePhase visitor2 = new ReferencePhase(visitor.scopes,visitor.globals);
+        visitor2.visit(tree);
         
-        FirstPass def = new FirstPass();
-        walker.walk(def, tree);
-        // create next phase and feed symbol table info from define to reference phase
-        SecondPass ref = new SecondPass(def.globals, def.scopes);
-        walker.walk(ref, tree);
-        */
 	}
 }

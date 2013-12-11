@@ -11,8 +11,10 @@ package src;
 /** Represents a variable definition (name,type) in symbol table */
 public class VariableSymbol extends Symbol {
 	public boolean isConstant = false;
-    public VariableSymbol(String name, Type type, boolean isConstant) { 
+	public int order;
+    public VariableSymbol(String name, Type type, boolean isConstant,int order) { 
     	super(name, type);
     	this.isConstant = isConstant;
+    	this.order = order;
     }
 }

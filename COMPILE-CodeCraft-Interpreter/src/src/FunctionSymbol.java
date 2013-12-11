@@ -8,16 +8,20 @@ package src;
  * We make no guarantees that this code is fit for any purpose. 
  * Visit http://www.pragmaticprogrammer.com/titles/tpantlr2 for more book information.
 ***/
+import gen.CodeCraftGrammarParser.FunctionDeclarationContext;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class FunctionSymbol extends Symbol implements Scope {
     Map<String, Symbol> arguments = new LinkedHashMap<String, Symbol>();
     Scope enclosingScope;
+    FunctionDeclarationContext ctx;
 
-    public FunctionSymbol(String name, Type retType, Scope enclosingScope) {
+    public FunctionSymbol(String name, Type retType, Scope enclosingScope, FunctionDeclarationContext ctx) {
         super(name, retType);
         this.enclosingScope = enclosingScope;
+        this.ctx = ctx;
     }
 
     public Symbol resolve(String name) {
@@ -34,6 +38,7 @@ public class FunctionSymbol extends Symbol implements Scope {
         arguments.put(sym.name, sym);
         sym.scope = this; // track the scope in each symbol
     }
+    
 
     public Scope getEnclosingScope() { return enclosingScope; }
     public String getScopeName() { return name; }
