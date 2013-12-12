@@ -277,6 +277,10 @@ public class EvalVisitor extends CodeCraftGrammarBaseVisitor<Symbol>{
     }
     @Override
     public Symbol visitFuncCall(FuncCallContext ctx) {
+    	
+    	String funcName		=	ctx.getText(); 
+    	
+    	
     	this.visit(ctx.functionCallStatement());
     	return new Symbol(Type.tNULL,null);
     }
@@ -284,7 +288,11 @@ public class EvalVisitor extends CodeCraftGrammarBaseVisitor<Symbol>{
     public Symbol visitFuncCallID(FuncCallIDContext ctx) {
     	//WHAT
     	//this.visitFunctionDeclaration();
-    	FunctionSymbol s = (FunctionSymbol)scopes.get(ctx);
+    	FunctionSymbol s = (FunctionSymbol)scopes.get(ctx.ID());
+    	if(ctx.isEmpty() == false)
+    	{
+    		//
+    	}
     	return s;
     }
     @Override
